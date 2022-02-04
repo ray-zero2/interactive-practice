@@ -1,85 +1,66 @@
 import Stalker from './src/Stalker';
+import Intera from './src/core/Intera';
 import './style.scss'
 
-let mouseDown = false;
-let lastTimeStamp = null;
-let time = 0;
+const STALKERS_NUM = 20;
+class Intera1 extends Intera {
 
-const STALKER_NUM = 20;
-const stalkers = [];
+  constructor() {
+    super();
 
-for(let i = 0; i < STALKER_NUM; i++) {
-  stalkers.push(new Stalker());
+    this.stalkers = [];
+    this.init();
+  }
+
+  init() {
+    for(let i = 0; i < STALKERS_NUM; i++) {
+      this.stalkers.push(new Stalker(i));
+    };
+
+    this.stalkers.forEach((stalker, index) => {
+      stalker.init();
+      if(index >= 1) {
+        const prevStalker = this.stalkers[index - 1];
+        stalker.setTarget(prevStalker.position);
+      } else {
+        stalker.setTarget(this.mouse.position);
+      }
+    })
+  }
+
+  update() {
+    this.stalkers.forEach(stalker => {
+      stalker.update(this.deltaTime);
+    })
+  }
+
+  draw() {
+    this.stalkers.forEach(stalker => {
+      stalker.draw();
+    })
+  }
+
+  handleMouseDown(e) {
+    super.handleMouseDown(e);
+    this.setMouseFlagToStalkers();
+  }
+
+  handleMouseMove(e) {
+    if(!this.mouse.isDown) return;
+    super.handleMouseMove(e);
+  }
+
+  handleMouseUp(e) {
+    super.handleMouseUp(e);
+    this.setMouseFlagToStalkers();
+  }
+
+  setMouseFlagToStalkers() {
+    this.stalkers.forEach(stalker => {
+      stalker.setMouseDown(this.mouse.isDown);
+    })
+  }
 }
 
-const mouse = {
-  x: 0,
-  y: 0
-};
-
-const update = () => {
-  stalkers.forEach(stalker => {
-    stalker.update();
-  })
-}
-
-const handleMouseDown = (e) => {
-  mouseDown = true;
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-  update();
-};
-
-const handleMouseUp = () => {
-  mouseDown = false;
-};
-
-const handleMouseMove = (e) => {
-  if(!mouseDown) return;
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-  update();
-}
-
-const draw = () => {
-  stalkers.forEach(stalker => {
-    stalker.draw();
-  })
-  // console.log('test');
-}
-
-const animate = (timeStamp) => {
-  requestAnimationFrame(animate);
-  const deltaTime = (timeStamp - lastTimeStamp) / 1000 || 0;
-  time += deltaTime
-  // console.log(time);
-  update();
-  draw();
-  lastTimeStamp = timeStamp;
-}
-
-const bind = () => {
-  window.addEventListener('mousedown', handleMouseDown, { passive: false });
-  window.addEventListener('mousemove', handleMouseMove, { passive: false });
-  window.addEventListener('mouseup', handleMouseUp, { passive: false });
-}
-
-const initStalkers = () => {
-  stalkers.forEach((stalker, index) => {
-    stalker.init();
-    if(index >= 1) {
-      const prevStalker = stalkers[index - 1];
-      stalker.setTarget(prevStalker.position);
-    } else {
-      stalker.setTarget(mouse);
-    }
-  })
-}
-
-const init = () => {
-  initStalkers();
-  bind();
-  animate();
-}
-
-init();
+const intera = new Intera1();
+intera.start();
