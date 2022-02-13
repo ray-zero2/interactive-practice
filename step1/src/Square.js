@@ -21,7 +21,10 @@ export default class Square {
 
   update(deltaTime) {
     this.time += deltaTime;
-    const mouseFromCenter = this.#normalizedMouseFromCenter();
+    const mouseFromCenter =
+      this.isMouseDown
+        ? this.#normalizedMouseFromCenter()
+        : {x: 0, y: 0};
     const invertMouseFromCenter = {
       x: -mouseFromCenter.x,
       y: -mouseFromCenter.y
