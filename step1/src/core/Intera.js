@@ -35,6 +35,8 @@ export default class Intera {
     this.mouse.position.y = e.clientY;
   }
 
+  handleResize(e) {}
+
   animate(timeStamp) {
     requestAnimationFrame(this.animate.bind(this));
     this.deltaTime = (timeStamp - this.lastTimeStamp) / 1000 || 0;
@@ -48,5 +50,6 @@ export default class Intera {
     window.addEventListener('mousedown', this.handleMouseDown.bind(this), { passive: false });
     window.addEventListener('mousemove', this.handleMouseMove.bind(this), { passive: false });
     window.addEventListener('mouseup', this.handleMouseUp.bind(this), { passive: false });
+    window.addEventListener('resize', this.handleResize.bind(this), { passive: true });
   }
 }
