@@ -119,6 +119,31 @@ class Intera1 extends Intera {
       square.setMouseDown(this.mouse.isDown);
     })
   }
+
+  handleTouchStart(e) {
+    e.preventDefault();
+    this.mouse.isDown = true;
+    this.mouse.position.x = e.touches[0].pageX;
+    this.mouse.position.y = e.touches[0].pageY;
+    this.setMouseFlag();
+  }
+  handleTouchMove(e) {
+    e.preventDefault();
+    this.mouse.position.x = e.touches[0].pageX;
+    this.mouse.position.y = e.touches[0].pageY;
+  }
+  handleTouchEnd(e) {
+    e.preventDefault();
+    this.mouse.isDown = false;
+    this.setMouseFlag()
+  }
+
+  bind() {
+    super.bind();
+    window.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: false });
+    window.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
+    window.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: false });
+  }
 }
 
 const intera = new Intera1();
