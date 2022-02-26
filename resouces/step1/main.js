@@ -137,9 +137,13 @@ class Intera1 extends Intera {
     this.mouse.isDown = false;
     this.setMouseFlag()
   }
+  handleLoad() {
+    this.handleResize();
+  }
 
   bind() {
     super.bind();
+    window.addEventListener('load', this.handleLoad.bind(this), { passive: true });
     window.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: false });
     window.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
     window.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: false });
