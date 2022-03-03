@@ -4,7 +4,7 @@ import './style.scss'
 import Square from './src/Square';
 import { lerp } from './src/mathUtils';
 
-const squares_NUM = 15;
+const SQUARES_NUM = 15;
 const STALKERS_NUM = 20;
 class Intera1 extends Intera {
 
@@ -21,7 +21,7 @@ class Intera1 extends Intera {
   }
 
   init() {
-    for(let i = 0; i < squares_NUM; i++) {
+    for(let i = 0; i < SQUARES_NUM; i++) {
       this.squares.push(new Square(i));
     };
     for(let i = 0; i < STALKERS_NUM; i++) {
@@ -32,7 +32,7 @@ class Intera1 extends Intera {
       const maxSpeed = 0.3;
       const minSpeed = 0.1
       square.setWindowSize(this.windowSize.x, this.windowSize.y);
-      square.setSpeed(lerp(index, 0, squares_NUM, maxSpeed, minSpeed));
+      square.setSpeed(lerp(index, 0, SQUARES_NUM, maxSpeed, minSpeed));
       square.setTarget(this.mouse.position);
 
       if(index >= 1) {
