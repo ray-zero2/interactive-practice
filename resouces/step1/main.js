@@ -39,11 +39,9 @@ class Intera1 extends Intera {
         const prevSquare = this.squares[index - 1];
         const prevSize = prevSquare.size;
         square.setSize(prevSize.x, prevSize.y);
-
       } else {
         square.setSize(this.windowSize.x, this.windowSize.y);
       }
-
       square.init();
     })
 
