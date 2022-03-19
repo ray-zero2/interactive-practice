@@ -3,6 +3,6 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   base: './',
   build: {
-    outDir: '../../step2'
+    outDir: '../../doc/step2'
   }
 });
