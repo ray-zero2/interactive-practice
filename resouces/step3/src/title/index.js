@@ -1,5 +1,6 @@
 import velocity from 'velocity-animate';
 import Char from './Char';
+import { EASING } from './const';
 import { mouse } from './Mouse';
 
 const COLORS = ['red', 'green', 'blue'];
@@ -10,13 +11,11 @@ export default class Title {
     this.original = null;
     this.chars = [];
     this.mouse = mouse;
-    // this.animator = animator;
-    this.time = 0;
-    this.deltaTime = 0;
-    this.lastTimeStamp = 0;
+    // this.time = 0;
+    // this.deltaTime = 0;
+    // this.lastTimeStamp = 0;
     this.progress = 0.001;
     this.init();
-    // this.bind();
   }
 
 
@@ -64,8 +63,8 @@ export default class Title {
     await velocity(this.original,{
       tween: [1, this.progress]
     },{
-      duration: 600,
-      easing: 'easeInSine',
+      duration: 300,
+      easing: EASING,
       begin: () => {
         this.animate();
       },
@@ -77,20 +76,19 @@ export default class Title {
       tween: [0, 1]
     },{
       duration: 600,
-      easing: 'easeInSine',
+      easing: EASING,
       progress: (elements, complete, remaining, start, tweenValue) => {
         this.progress = tweenValue;
       }
     });
-    // this.animate();
   }
 
   animate(timeStamp) {
     requestAnimationFrame(this.animate.bind(this));
-    this.deltaTime = (timeStamp - this.lastTimeStamp) / 1000 || 0;
-    this.time += this.deltaTime
+    // this.deltaTime = (timeStamp - this.lastTimeStamp) / 1000 || 0;
+    // this.time += this.deltaTime
     this.update();
-    this.lastTimeStamp = timeStamp;
+    // this.lastTimeStamp = timeStamp;
   }
 
   update() {
@@ -116,15 +114,4 @@ export default class Title {
     return span;
   }
 
-  handleMouseMove(e) {
-    // console.log(e);
-  }
-
-  bind() {
-    window.addEventListener('mousemove', this.handleMouseMove.bind(this));
-  }
-
-  unbind() {
-    window.removeEventListener('mousemove', this.handleMouseMove.bind(this));
-  }
 }
