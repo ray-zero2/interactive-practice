@@ -1,3 +1,4 @@
+import { easeOutCubic } from '../easings';
 import { mix, clamp } from "../mathUtils";
 
 const PARAM = {
@@ -21,6 +22,7 @@ export default class Char {
     this.target = {x: 0, y: 0}
     this.scale = 1;
     this.delay = groupIndex * 200 + charIndex * 50;
+    this.opacity = 0;
   }
 
   setPosition(x, y) {
@@ -43,11 +45,13 @@ export default class Char {
 
       this.position.x += (endX - this.position.x) * 0.01;
       this.position.y += (endY - this.position.y) * 0.01;
+
+      this.opacity = easeOutCubic(progress)
     }, this.delay);
   }
 
   draw() {
     this.charElement.style.transform = `matrix(${this.scale}, 0, 0, ${this.scale}, ${this.position.x}, ${this.position.y})`;
-    // this.charElement.style.opacity = this.opacity;
+    this.charElement.style.opacity = this.opacity;
   }
 }

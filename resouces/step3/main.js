@@ -15,8 +15,10 @@ class Intera3 {
   }
 
   handleLoaded() {
-    this.title1.start();
-    this.title2.start();
+    setTimeout(() => {
+      this.title1.start();
+      this.title2.start();
+    }, 1000);
   }
 }
 
