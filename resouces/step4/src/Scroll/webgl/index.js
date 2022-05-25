@@ -21,7 +21,7 @@ export default class index {
 
   async init() {
     const loader = new GLTFLoader();
-    const gltf = await loader.loadAsync('./animationTest.glb')
+    const gltf = await loader.loadAsync('./assets/animationTest.glb')
     console.log(gltf);
     this.camera = gltf.cameras[0];
     this.scene.add(gltf.scene)
