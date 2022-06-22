@@ -1,0 +1,63 @@
+@use '../common/style/reset';
+@use '../common/style/global';
+
+
+html, body {
+  width: 100%;
+  // height:100%;
+  // overflow: hidden;
+  background-color: #222;
+  color: #eee;
+  font-family: "Century Gothic";
+}
+
+.canvas {
+  width: 100vw;
+  height: 100vh;
+  height: 100lvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.section {
+  width: 100%;
+  height: 150vh;
+  padding: 64px 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.section-container {
+  // width: 50%;
+  // @media screen and (max-width: 780px) {
+    width: 100%;
+  // }
+
+  h2 {
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  p {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+}
+
+.section {
+  &:nth-child(even) {
+    h2, p {
+      text-align: right;
+    }
+  }
+}
+
+.end {
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 30px;
+}
