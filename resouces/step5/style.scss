@@ -4,60 +4,64 @@
 
 html, body {
   width: 100%;
-  // height:100%;
-  // overflow: hidden;
-  background-color: #222;
+  height: auto;
+  background-color: #eee;
   color: #eee;
   font-family: "Century Gothic";
 }
 
-.canvas {
-  width: 100vw;
-  height: 100vh;
-  height: 100lvh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
+body {
+  padding: 200px 10px;
+  height: auto;
 }
 
-.section {
+.list {
   width: 100%;
-  height: 150vh;
-  padding: 64px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.list__item {
+  flex-shrink: 0;
+}
+
+
+.lift {
   position: relative;
-  z-index: 2;
-}
+  width: 150px;
+  height: 150px;
 
-.section-container {
-  // width: 50%;
-  // @media screen and (max-width: 780px) {
-    width: 100%;
-  // }
+  & > span {
+    $span-num: 5;
+    $max-dist: 80;
 
-  h2 {
-    font-size: 32px;
-    font-weight: bold;
-  }
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-color: var(--color);
+    position: absolute;
+    inset: auto 0 0 0;
+    margin: auto;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  p {
-    margin-top: 20px;
-    font-size: 24px;
-  }
-}
+    @for $count from 1 through $span-num {
+      &:nth-child(#{$count}) {
+        opacity: calc(1 / $span-num) * $count;
 
-.section {
-  &:nth-child(even) {
-    h2, p {
-      text-align: right;
+        $each-dist: calc($max-dist / $span-num);
+        transform: rotateY(20deg) rotateX(50deg)
+          translateZ(
+            min(
+              #{($count - 1) * $each-dist}px,
+              var(--progress) * #{$max-dist}px
+            )
+          );
+      }
     }
   }
-}
-
-.end {
-  width: 100%;
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  padding: 30px;
 }

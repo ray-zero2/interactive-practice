@@ -4,9 +4,7 @@ const CLASS_NAME = {
 }
 
 export default class Hover {
-
   /**
-   * @param {string} selector
    * @param { {
    * oneShot?: boolean;
    * rollOver: (target: HTMLElement) => Promise<void>;
@@ -17,8 +15,8 @@ export default class Hover {
    *  }
    * } } options
    */
-  constructor(selector, options) {
-    this.element = document.querySelector(selector);
+  constructor(element, options) {
+    this.element = element// document.querySelector(selector);
     this.isPlaying = false;
     this.isOver = false;
 
