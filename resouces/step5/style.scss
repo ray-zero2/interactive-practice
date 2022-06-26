@@ -1,0 +1,67 @@
+@use '../common/style/reset';
+@use '../common/style/global';
+
+
+html, body {
+  width: 100%;
+  height: auto;
+  background-color: #eee;
+  color: #eee;
+  font-family: "Century Gothic";
+}
+
+body {
+  padding: 200px 10px;
+  height: auto;
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.list__item {
+  flex-shrink: 0;
+}
+
+
+.lift {
+  position: relative;
+  width: 150px;
+  height: 150px;
+
+  & > span {
+    $span-num: 5;
+    $max-dist: 80;
+
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-color: var(--color);
+    position: absolute;
+    inset: auto 0 0 0;
+    margin: auto;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @for $count from 1 through $span-num {
+      &:nth-child(#{$count}) {
+        opacity: calc(1 / $span-num) * $count;
+
+        $each-dist: calc($max-dist / $span-num);
+        transform: rotateY(20deg) rotateX(50deg)
+          translateZ(
+            min(
+              #{($count - 1) * $each-dist}px,
+              var(--progress) * #{$max-dist}px
+            )
+          );
+      }
+    }
+  }
+}
