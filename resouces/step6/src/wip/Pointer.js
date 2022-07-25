@@ -3,6 +3,7 @@ import { EventEmitter } from 'events';
 export default class Pointer extends EventEmitter {
   constructor() {
     super();
+
     this.position = {
       x: 0,
       y: 0
@@ -62,7 +63,7 @@ export default class Pointer extends EventEmitter {
       x: e.clientX,
       y: e.clientY
     }
-    
+
     if(this.emitOnMove) this.emit('mousemove', e);
   }
   mouseUp(e) {
