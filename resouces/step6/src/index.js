@@ -38,6 +38,7 @@ export default class Index extends Intera {
   handleResize(e) {
     this.rail1.resize(e);
     this.rail2.resize(e);
+    this.lines.forEach(line => line.resize());
   }
 
   handleWheel(e) {

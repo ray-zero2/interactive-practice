@@ -77,6 +77,10 @@ main {
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
   color: transparent;
+
+  @media screen and (max-width: 450px) {
+    font-size: 70px;
+  }
 }
 
 $height: 200px;
@@ -90,13 +94,16 @@ $height: 200px;
   margin: 0 auto;
   // border: 1px solid pink;
 }
+
 .line {
   &--top {
     top: math.div(-$height, 2);
   }
   &--middle {
-    top: math.div($height, 2);
+    top: 50%;
+    transform: translateY(-50%);
   }
+  
   &--bottom {
     bottom: math.div(-$height, 2);
   }

@@ -109,6 +109,7 @@ export default class Line {
     event.clientY = event.touches[0].clientY
     this.handleMouseDown(event);
   }
+
   handleToucheMove(e) {
     const event = e;
     event.clientX = event.touches[0].clientX

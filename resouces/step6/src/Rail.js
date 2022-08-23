@@ -27,7 +27,6 @@ export default class Rail {
     this.fillElement()
     this.setStartX();
 
-
     gsap.set(this.$wrapper, {
       x: this.startX,
       force3D: true
@@ -85,7 +84,4 @@ export default class Rail {
     if(needsRefillElements) this.fillElement()
   }
 
-  scroll(e) {
-
-  }
 }
