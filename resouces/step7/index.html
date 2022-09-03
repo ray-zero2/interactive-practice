@@ -10,16 +10,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <script type="module" src="/main.js"></script>
   </head>
-  <body>
+  <body data-device="pc" style="--vw: 1px; --vh: 1px;">
     <div class="loading js-loading">
       <div class="loading__inner">
         <span class="loading__text">loading...</span>
       </div>
     </div>
-    <canvas class="js-canvas"></canvas>
-    <main>
-      <div class="content">
-        <section class="section">
+    <!-- <canvas class="js-canvas"></canvas> -->
+    <main class="main" style="--content-height: 12000px;">
+      <div class="main__inner">
+        <div class="main__content">
+          <div class="content-test">
+            <div>aiueo</div>
+            <div>aiueo</div>
+            <div>aiueo</div>
+            <div>aiueo</div>
+            <div>aiueo</div>
+            <div>aiueo</div>
+            <section class="stickySection js-section" style="--section-height: 3000px;">
+              <div class="stickySection__content js-section__content"></div>
+            </section>
+            <div>aiueo</div>
+            <div>aiueo</div>
+            <div>aiueo</div>
+            <div>aiueo</div>
+            <div>aiueo</div>
+            <div>aiueo</div>
+          </div>
+        </div>
+        <!-- <section class="section">
           <h2 class="section__title">lorem ipsum</h2>
           <p class="section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </section>
@@ -40,7 +59,7 @@
         <section class="section js-rendered">
           <h2 class="section__title">lorem ipsum</h2>
           <p class="section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </section>
+        </section> -->
       </div>
     </main>
   </body>
