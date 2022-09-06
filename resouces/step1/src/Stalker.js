@@ -1,3 +1,5 @@
+import AnimationFramer from "./core/AnimationFramer";
+
 export default class Stalker {
   constructor(id) {
     this.element = null;
@@ -42,11 +44,11 @@ export default class Stalker {
       this.opacity = Math.max(this.opacity - deltaTime*1.5, 0);
     }
 
+    let speed = AnimationFramer.getLerpCoeff(0.2, deltaTime);
+    if(!this.isMouseDown) speed = AnimationFramer.getLerpCoeff(0.5, deltaTime);
+    else if(distance <= 2) speed = AnimationFramer.getLerpCoeff(0.1, deltaTime);
 
-    let speed = 0.2;
-    if(!this.isMouseDown) speed = 0.5;
-    else if(distance <= 2) speed = 0.1;
-
+    console.log(speed);
     this.position.x += (targetPosition.x - this.position.x) * speed;
     this.position.y += (targetPosition.y - this.position.y) * speed;
 
