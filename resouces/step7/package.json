@@ -16,7 +16,7 @@
     "@ray-zero2/animation-framer": "ray-zero2/animation-framer",
     "cardinal-spline": "^0.0.1",
     "color-convert": "^2.0.1",
-    "gsap": "^3.10.4",
+    "gsap": "^3.11.1",
     "lil-gui": "^0.17.0",
     "normalize-wheel": "^1.0.1",
     "three": "^0.142.0"

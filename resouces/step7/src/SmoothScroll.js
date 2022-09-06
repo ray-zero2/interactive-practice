@@ -1,10 +1,11 @@
 import AnimationFramer from "@ray-zero2/animation-framer";
 import Section1 from "./Section1";
-import SmoothSection from "./SmoothSection";
+import { device } from "./utils/device";
 
 export default class SmoothScroll {
   constructor(selector) {
     this.id = 'smoothScroll';
+    this.isPc = device.isPc;
     this.$root = document.querySelector(selector);
     this.$fixed = this.$root.querySelector(selector + '__inner');
     this.$content = this.$root.querySelector(selector + '__content');
@@ -43,7 +44,7 @@ export default class SmoothScroll {
   update({deltaTime, time}) {
     const coeff = 0.9;
     this.scroll += (window.scrollY - this.scroll) * this.framer.getLerpCoeff(coeff);
-    this.$content.style.transform = `translate3d(0, ${-this.scroll}px, 0)`;
+    if(this.isPc) this.$content.style.transform = `translate3d(0, ${-this.scroll}px, 0)`;
 
     this.section1.update({deltaTime, time}, this.scroll);
   }
