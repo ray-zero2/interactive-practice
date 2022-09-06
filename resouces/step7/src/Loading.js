@@ -17,6 +17,7 @@ export default class Loading {
   }
 
   hide() {
-    this.$root.classList.add(CLASS_NAME.isHidden);
+    // this.$root.classList.add(CLASS_NAME.isHidden);
+    this.$root.style.display = 'none';
   }
 }

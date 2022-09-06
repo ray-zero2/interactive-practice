@@ -1,21 +1,15 @@
 
-import gsap from 'gsap';
 import colorConvert from "color-convert";
-import AnimationFramer from '@ray-zero2/animation-framer';
 
 import { rgbaStr2obj } from './utils/color';
 import { mix } from './utils/mathUtils';
 import { gui } from "./utils/gui";
-
-const ANIMATION_ID = 'domGlitch';
 
 export default class DomGlitch {
   constructor(selector = ".js-glitch") {
     this.selector = selector;
     this.$root = document.querySelector(selector);
     if(!this.$root) throw new Error('Element is not found');
-
-    this.animationFramer = AnimationFramer.getInstance();
 
     this.$content = this.$root.querySelector(selector + '__content');
     this.$copiedElement = null;
@@ -49,21 +43,12 @@ export default class DomGlitch {
   init() {
     this.setCopiedElement();
     this.setDefaultValues();
-    this.setGui();
-    this.setAnimation();
+    // this.setGui();
   }
-
 
   setCopiedElement() {
     this.$copiedElement = this.createCopiedElement();
     this.$root.append(this.$copiedElement);
-  }
-
-  setAnimation() {
-    this.animationFramer.add({
-      id: ANIMATION_ID,
-      update: this.update.bind(this)
-    })
   }
 
   createCopiedElement() {
@@ -102,39 +87,40 @@ export default class DomGlitch {
 
   start(options) {
     if(this.isActive) return;
-    if(!this.isIntersected()) return;
 
     this.setActiveStatus(true);
     // this.animate();
-    const duration = options?.duration ?? 0;
+    // const duration = options?.duration ?? 0;
 
-    gsap.to(this.property, {
-      factor: 1,
-      duration,
-      ease: 'power4.in',
-      onComplete: () => {
-        if(options?.callback) options.callback();
-      }
-    })
+    // gsap.to(this.property, {
+    //   factor: 1,
+    //   duration,
+    //   ease: 'power4.in',
+    //   onComplete: () => {
+    //     if(options?.callback) options.callback();
+    //   }
+    // })
   }
 
   stop(options) {
     if(!this.isActive) return;
     if(this.property.force) return;
-    const duration = options?.duration ?? 0;
-    gsap.to(this.property, {
-      factor: 0,
-      duration,
-      ease: 'power4.out',
-      onComplete: () => {
-        // if(this.requestId) cancelAnimationFrame(this.requestId);
-        this.setActiveStatus(false);
-        if(options?.callback) options.callback();
-      }
-    })
+    // const duration = options?.duration ?? 0;
+    // gsap.to(this.property, {
+    //   factor: 0,
+    //   duration,
+    //   ease: 'power4.out',
+    //   onComplete: () => {
+    //     // if(this.requestId) cancelAnimationFrame(this.requestId);
+    //     this.setActiveStatus(false);
+    //     if(options?.callback) options.callback();
+    //   }
+    // })
+    this.setActiveStatus(false);
   }
 
   setActiveStatus(isActive) {
+    console.log({isActive});
     if(isActive) {
       this.$root.classList.add('is-active');
       this.isActive = true;
@@ -151,7 +137,6 @@ export default class DomGlitch {
 
   glitch() {
     if(!this.$copiedElement) return;
-    if(!this.isIntersected()) return;
 
     const ratio = this.property.force ? 1 : this.property.factor;
 
@@ -205,11 +190,5 @@ export default class DomGlitch {
         ${right}% ${bottom}%,
         ${left}% ${bottom}%
       )`;
-  }
-
-  isIntersected() {
-    if(this.$root.dataset?.intersect === undefined) return true;
-
-    return this.$root.dataset?.intersect !== 'false'
   }
 }
