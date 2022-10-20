@@ -2,7 +2,7 @@ import './style.scss'
 import Felipe from './src/Felipe';
 
 const start = async () => {
-  console.log('start');
+  console.log('inspired by Felipe Pantone');
   new Felipe('.js-fp');
 }
 
