@@ -1,0 +1,99 @@
+@use "sass:math";
+// @use "sass:color";
+
+$wordColor: #eee;
+
+:root {
+  --bgColor: #000;
+  --wordColor: #{$wordColor};
+  font-family: 'Roboto', sans-serif;
+}
+
+* {
+  &, &::before, &::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+body {
+  background-color: var(--bgColor);
+  color: var(--wordColor);
+}
+body, main {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}
+
+.main__inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.envLight {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  background-color: #fff;
+  opacity: 0.11
+}
+
+$lightWidth: 90vmin;
+.yurayuraLight {
+  width: $lightWidth;
+  aspect-ratio: 1;
+  display: block;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 50%;
+  background: radial-gradient(circle closest-side, hsl(0deg 0% 35%), transparent);
+  //* opacity: 0.3;
+}
+
+.balls {
+  width: math.div($lightWidth,1);
+  aspect-ratio: 1;
+  filter:url('#noise') blur(10px);
+  // filter: blur(10px);
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+
+.ball {
+  width: math.div($lightWidth,2);
+  aspect-ratio: 1;
+  display: block;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background-color: hsl(23deg 33% 34% / 10%);
+  border-radius: 50%;
+}
+
+.light {
+  display: block;
+  width: 100vw;
+  height: auto;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+
+.washi {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  background: url(./assets/washi.jpeg) repeat center;
+  // display: none;
+  mix-blend-mode: color-burn;
+}
+
+svg{display: none;}
