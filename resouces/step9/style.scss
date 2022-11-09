@@ -39,8 +39,8 @@ body, main {
   height: 100%;
   position: absolute;
   inset: 0;
-  background-color: #fff;
-  opacity: 0.11
+  background-color: hsl(0deg 0% 5%);
+  opacity: 1
 }
 
 $lightWidth: 90vmin;
@@ -52,28 +52,26 @@ $lightWidth: 90vmin;
   inset: 0;
   margin: auto;
   border-radius: 50%;
-  background: radial-gradient(circle closest-side, hsl(0deg 0% 35%), transparent);
-  //* opacity: 0.3;
+  background: radial-gradient(circle closest-side, hsl(0deg 0% 10%), transparent);
 }
 
 .balls {
   width: math.div($lightWidth,1);
   aspect-ratio: 1;
   filter:url('#noise') blur(10px);
-  // filter: blur(10px);
   position: absolute;
   inset: 0;
   margin: auto;
 }
 
 .ball {
-  width: math.div($lightWidth,2);
+  width: math.div($lightWidth,3);
   aspect-ratio: 1;
   display: block;
   position: absolute;
   inset: 0;
   margin: auto;
-  background-color: hsl(23deg 33% 34% / 10%);
+  background-color:hsl(23deg 87% 68% / 1%);
   border-radius: 50%;
 }
 
@@ -92,8 +90,23 @@ $lightWidth: 90vmin;
   position: absolute;
   inset: 0;
   background: url(./assets/washi.jpeg) repeat center;
-  // display: none;
-  mix-blend-mode: color-burn;
+  mix-blend-mode: overlay;
 }
 
 svg{display: none;}
+
+.title {
+  width: 40vmin;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
