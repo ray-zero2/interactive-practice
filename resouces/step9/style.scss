@@ -39,7 +39,7 @@ body, main {
   height: 100%;
   position: absolute;
   inset: 0;
-  background-color: hsl(0deg 0% 5%);
+  background-color: hsl(0deg 0% 6%);
   opacity: 1
 }
 
@@ -52,7 +52,7 @@ $lightWidth: 90vmin;
   inset: 0;
   margin: auto;
   border-radius: 50%;
-  background: radial-gradient(circle closest-side, hsl(0deg 0% 10%), transparent);
+  background: radial-gradient(circle closest-side, hsl(0deg 0% 16%), transparent);
 }
 
 .balls {
@@ -71,7 +71,7 @@ $lightWidth: 90vmin;
   position: absolute;
   inset: 0;
   margin: auto;
-  background-color:hsl(23deg 87% 68% / 1%);
+  background-color:hsl(23deg 87% 68% / 2%);
   border-radius: 50%;
 }
 
