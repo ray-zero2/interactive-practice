@@ -13,6 +13,7 @@
     "vite": "^3.2.2"
   },
   "dependencies": {
+    "@mediapipe/selfie_segmentation": "^0.1.1671057942",
     "@ray-zero2/animation-framer": "ray-zero2/animation-framer",
     "@tensorflow-models/body-segmentation": "^1.0.1",
     "@tensorflow/tfjs-backend-webgl": "^4.1.0",

@@ -20,10 +20,16 @@ const app = async () => {
   const segmentationConfig = {multiSegmentation: true, segmentBodyParts: false};
   const people = await segmenter.segmentPeople(imageElement, segmentationConfig);
   console.log(people);
-  const image = document.createElement('img');
-  image.src = await people[0].mask.toImageData();
-  console.log({image});
-  document.body.append(image);
+  const maskImageData = await people[0].mask.toImageData();
+  
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = maskImageData.width;
+  canvas.height = maskImageData.height;
+  ctx.putImageData(maskImageData, 0, 0 );
+  ctx.globalAlpha = 0.3;
+  ctx.drawImage(imageElement, 0, 0, maskImageData.width, maskImageData.height);
+  document.body.append(canvas);
 }
 
 
