@@ -1,0 +1,122 @@
+@use "sass:math";
+// @use "sass:color";
+
+img {
+  display: block;
+  width: 100%;
+}
+
+.input {
+  width: 80vw;
+  margin: 0 auto;
+}
+// $wordColor: #eee;
+
+// :root {
+//   --bgColor: #000;
+//   --wordColor: #{$wordColor};
+//   font-family: 'Roboto', sans-serif;
+// }
+
+* {
+  &, &::before, &::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+// body {
+//   background-color: var(--bgColor);
+//   color: var(--wordColor);
+// }
+// body, main {
+//   width: 100vw;
+//   height: 100vh;
+//   display: block;
+// }
+
+// .main__inner {
+//   width: 100%;
+//   height: 100%;
+//   position: relative;
+//   overflow: hidden;
+// }
+
+// .envLight {
+//   width: 100%;
+//   height: 100%;
+//   position: absolute;
+//   inset: 0;
+//   background-color: hsl(0deg 0% 6%);
+//   opacity: 1
+// }
+
+// $lightWidth: 90vmin;
+// .yurayuraLight {
+//   width: $lightWidth;
+//   aspect-ratio: 1;
+//   display: block;
+//   position: absolute;
+//   inset: 0;
+//   margin: auto;
+//   border-radius: 50%;
+//   background: radial-gradient(circle closest-side, hsl(0deg 0% 16%), transparent);
+// }
+
+// .balls {
+//   width: math.div($lightWidth,1);
+//   aspect-ratio: 1;
+//   filter:url('#noise') blur(10px);
+//   position: absolute;
+//   inset: 0;
+//   margin: auto;
+// }
+
+// .ball {
+//   width: math.div($lightWidth,3);
+//   aspect-ratio: 1;
+//   display: block;
+//   position: absolute;
+//   inset: 0;
+//   margin: auto;
+//   background-color:hsl(23deg 87% 68% / 2%);
+//   border-radius: 50%;
+// }
+
+// .light {
+//   display: block;
+//   width: 100vw;
+//   height: auto;
+//   position: absolute;
+//   inset: 0;
+//   margin: auto;
+// }
+
+// .washi {
+//   width: 100%;
+//   height: 100%;
+//   position: absolute;
+//   inset: 0;
+//   background: url(./assets/washi.jpeg) repeat center;
+//   mix-blend-mode: overlay;
+// }
+
+// svg{display: none;}
+
+// .title {
+//   width: 40vmin;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   mix-blend-mode: multiply;
+//   opacity: 0.55;
+//   pointer-events: none;
+
+//   img {
+//     width: 100%;
+//     height: auto;
+//     display: block;
+//   }
+// }
