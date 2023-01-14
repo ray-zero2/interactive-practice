@@ -1,0 +1,26 @@
+{
+  "name": "step8",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.56.0",
+    "vite": "^3.2.2"
+  },
+  "dependencies": {
+    "@mediapipe/selfie_segmentation": "^0.1.1671057942",
+    "@ray-zero2/animation-framer": "ray-zero2/animation-framer",
+    "@tensorflow-models/body-segmentation": "^1.0.1",
+    "@tensorflow/tfjs-backend-webgl": "^4.1.0",
+    "@tensorflow/tfjs-converter": "^4.1.0",
+    "@tensorflow/tfjs-core": "^4.1.0",
+    "lil-gui": "^0.17.0",
+    "ogl": "^0.0.103",
+    "three": "^0.146.0"
+  }
+}
