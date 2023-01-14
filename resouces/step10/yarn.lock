@@ -12,6 +12,11 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.15.10.tgz#78a42897c2cf8db9fd5f1811f7590393b77774c7"
   integrity sha512-w0Ou3Z83LOYEkwaui2M8VwIp+nLi/NA60lBLMvaJ+vXVMcsARYdEzLNE7RSm4+lSg4zq4d7fAVuzk7PNQ5JFgg==
 
+"@mediapipe/selfie_segmentation@^0.1.1671057942":
+  version "0.1.1671057942"
+  resolved "https://registry.yarnpkg.com/@mediapipe/selfie_segmentation/-/selfie_segmentation-0.1.1671057942.tgz#525d06bb430427e85b90d19ba4e6b8416df87c5f"
+  integrity sha512-K0aR3L7r4DKfK71ZoAYZCyw1P17wqejpI2jaLlSbFo0Hi51jNHmiqw+SD/E1KskdnRFx2zRwW/VWoiY2H5cBwQ==
+
 "@ray-zero2/animation-framer@ray-zero2/animation-framer":
   version "0.0.1"
   resolved "https://codeload.github.com/ray-zero2/animation-framer/tar.gz/6fb538451cb92f59854703d46eb099c8c65db916"
@@ -402,6 +407,11 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
+
+ogl@^0.0.103:
+  version "0.0.103"
+  resolved "https://registry.yarnpkg.com/ogl/-/ogl-0.0.103.tgz#61d44cba12566e67da8263fe14d6fe4bda13cf6e"
+  integrity sha512-QO3Q/ux1STMBm0bSI/5zzEJz9M8mGyvKjW1tgCnRCx7mHIQ9fSFUTtVVHhj7aLmH7uF7AqHAcovFbDOkjj6Mlw==
 
 once@^1.3.0:
   version "1.4.0"
