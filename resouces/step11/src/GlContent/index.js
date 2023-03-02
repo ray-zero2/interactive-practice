@@ -139,7 +139,7 @@ export default class WebGLContent {
 
   setLights() {
     const spot1 = this.lights.spot1;
-    spot1.angle = 0.628318530717959;
+    spot1.angle = 0.383972435438752;
     spot1.distance = 50;
     spot1.position.set(0, 3, 4);
     spot1.penumbra = 0.628318530717959;

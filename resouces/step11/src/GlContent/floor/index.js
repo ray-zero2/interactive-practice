@@ -13,6 +13,7 @@ export default class Index {
   init() {
     this.obj.receiveShadow = true
     this.obj.rotateX(-Math.PI/2);
+    this.obj.translateZ(-2);
   }
 
   update(deltaTime) {
