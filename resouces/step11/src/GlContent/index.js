@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import Stats from 'three/examples/jsm/libs/stats.module'
+import { ShadowMapViewer } from 'three/addons/utils/ShadowMapViewer.js';
 import Framer from '@ray-zero2/animation-framer';
 import gui from './utils/gui'
 // import { GUI } from 'lil-gui';
@@ -8,6 +9,7 @@ import { EffectPass, DepthOfFieldEffect, VignetteEffect, EffectComposer, RenderP
 import Camera from './Camera';
 // import Petal from './petals/Petal';
 import Plane from './plane';
+import Floor from './floor';
 import Sphere from './sphere'
 import SpotLight from './lights/spotlight'
 import noiseTex from './textures/snoise.png';
@@ -24,10 +26,10 @@ export default class WebGLContent {
     this.dpr = Math.min(window.devicePixelRatio, 2);
     this.renderer = new THREE.WebGLRenderer({
       canvas,
-      antialias: false,
-      stencil: false,
-      depth: false,
-      powerPreference: "high-performance"
+      // antialias: false,
+      // stencil: false,
+      depth: true,
+      // powerPreference: "high-performance",
     });
     this.renderer.domElement.style.width = "100%";
     this.renderer.domElement.style.height = "100%";
@@ -44,12 +46,14 @@ export default class WebGLContent {
     });
     this.plane = null;
     this.sphere = null;
+    this.floor = null;
     this.lights = {
       spot1: new SpotLight()
     };
     this.composer = new EffectComposer(undefined, {
       // multisampling: this.dpr === 1 ? 2 : undefined,
     });
+    this.spotLightShadowMapViewer = new ShadowMapViewer(this.lights.spot1);
 
     this.stats = new Stats()
     this.gui = gui;
@@ -65,17 +69,23 @@ export default class WebGLContent {
     this.renderer.setSize(this.resolution.x, this.resolution.y, false);
     this.camera.resize(this.resolution);
     this.composer?.setSize(this.resolution.x, this.resolution.y);
+
+    this.spotLightShadowMapViewer.size.set( window.innerWidth*0.2, window.innerHeight*0.2 );
+		this.spotLightShadowMapViewer.position.set(20, 10 );
+    this.spotLightShadowMapViewer.updateForWindowResize();
   }
 
   async init() {
     document.body.appendChild(this.stats.dom);
-    this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 6;
-    this.plane = new Plane(50, 50, 256, 256);
+    // this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    // this.renderer.toneMappingExposure = 6;
+    // this.plane = new Plane(50, 50, 256, 256);
     this.sphere = new Sphere();
+    this.floor = new Floor();
     this.scene.add(this.lights.spot1);
-    // this.scene.add(this.plane.obj);
+    //this.scene.add(this.plane.obj);
     this.scene.add(this.sphere.obj);
+    this.scene.add(this.floor.obj);
 
     ///
     const spotLightHelper = this.lights.spot1.getHelper();
@@ -100,69 +110,40 @@ export default class WebGLContent {
     this.handleResize();
   }
 
-  // async fetchObjects() {
-  //   const textureLoader = new THREE.TextureLoader();
-
-  //   return await Promise.all([
-  //     textureLoader.loadAsync(noiseTex),
-  //     textureLoader.loadAsync(petalTex),
-  //   ]).then((response) => {
-  //     const noiseTexture = response[0];
-  //     const petalTexture = response[1];
-  //     noiseTexture.wrapS = THREE.MirroredRepeatWrapping;
-  //     noiseTexture.wrapT = THREE.MirroredRepeatWrapping;
-  //     petalTexture.mipmaps = THREE.LinearMipMapLinearFilter;
-  //     const textures = {
-  //       noise: noiseTexture,
-  //       petal: petalTexture
-  //     }
-  //     return { textures };
-  //   });
-  // }
-
-
   start() {
     this.framer.start();
   }
 
   animate({ deltaTime }) {
     this.time += deltaTime;
+
     this.lights.spot1.update(deltaTime);
     this.camera.update(deltaTime);
     // this.petal.update(deltaTime);
-    this.plane.update(deltaTime);
+    // this.plane.update(deltaTime);
+    this.sphere.update(deltaTime);
+    this.floor.update(deltaTime);
     // this.renderer.render(this.scene, this.camera);
     this.composer.render(deltaTime);
+    this.spotLightShadowMapViewer.render(this.renderer);
     this.stats.update();
   }
 
   setRenderer() {
     this.renderer.setSize(this.resolution.x, this.resolution.y, false);
     this.renderer.setPixelRatio(this.dpr);
-    this.renderer.clearColor('#020203');
+    // this.renderer.clearColor('#020203');
+    this.renderer.shadowMap.enabled = true;
+    // this.renderer.shadowMap.needsUpdate = true;
   }
 
   setLights() {
     const spot1 = this.lights.spot1;
-    spot1.angle = 0.418879020478639;
-    spot1.distance = 10;
-    spot1.position.set(0, 3, 2);
-    spot1.penumbra = 0.4;
+    spot1.angle = 0.628318530717959;
+    spot1.distance = 50;
+    spot1.position.set(0, 3, 4);
+    spot1.penumbra = 0.628318530717959;
     spot1.decay = 2;
-
-  //   const directionalLight = this.lights.spot1;
-  //   directionalLight.intensity = 1;
-  //   directionalLight.position.set(1, 0.5, -1.5).normalize().multiplyScalar(30);
-  //   directionalLight.castShadow = true;
-  //   directionalLight.shadow.mapSize.set(1024, 1024)
-  //   directionalLight.shadow.camera.near = 0.5
-  //   directionalLight.shadow.camera.far = 5.5
-  //   directionalLight.shadow.camera.left = -2
-  //   directionalLight.shadow.camera.right = 2
-  //   directionalLight.shadow.camera.top = 1.5
-  //   directionalLight.shadow.camera.bottom = -0.5
-  //   directionalLight.shadow.normalBias = 0.005
-  //   directionalLight.shadow.bias = 0.01
   }
 
   setEffect() {

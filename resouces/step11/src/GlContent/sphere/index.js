@@ -5,38 +5,36 @@ import begin_vertex from './glsl/begin_vertex.vs';
 import beginnormal_vertex from './glsl/beginnormal_vertex.vs';
 import common_vs from './glsl/common.vs';
 import uv_vertex from './glsl/uv_vertex.vs';
+import project_vertex from './glsl/project_vertex.vs';
 
 export default class Index {
   constructor() {
     this.uniforms = { uTime: { value: 0 } };
-    this.geometry = new THREE.SphereGeometry( 1, 256, 256 );
-    this.material = customizeMaterial(new THREE.MeshStandardMaterial({
-        flatShading: true,
-        metalness: 1.2,
-        roughness: 1,
-        envMapIntensity: 0.9,
-        defines: {
-        },
-      }),
-      this.uniforms,
-      this.customizeShader.bind(this));
-
-    this.obj = new THREE.Mesh(this.geometry, this.material.material);
-    this.time = 0;
-    this.depthMaterial = customizeMaterial(
-      new THREE.MeshDepthMaterial({
-        depthPacking: THREE.RGBADepthPacking,
-      }),
+    this.geometry = new THREE.OctahedronGeometry(1, 20);
+    this.material = customizeMaterial(new THREE.MeshStandardMaterial(),
       this.uniforms,
       this.customizeShader.bind(this)
     );
+    this.depthMaterial = customizeMaterial(
+        new THREE.MeshDepthMaterial({
+          depthPacking: THREE.RGBADepthPacking,
+        }),
+        this.uniforms,
+        this.customizeShader.bind(this)
+    );
+    this.obj = new THREE.Mesh(this.geometry, this.material.material);
+    this.geometry.computeVertexNormals();
+    this.time = 0;
+
     this.init();
   }
 
   init() {
-    this.obj.castShadow = true
-    this.obj.receiveShadow = true
+    this.obj.castShadow = true;
+    this.obj.receiveShadow = true;
     this.obj.customDepthMaterial = this.depthMaterial.material;
+
+    this.initGeometry();
   }
 
   update(deltaTime) {
@@ -45,13 +43,15 @@ export default class Index {
   }
 
   customizeShader(shader, renderer) {
-    console.log(shader.vertexShader);
+    console.log(shader);
     shader.vertexShader =
       shader.vertexShader
         .replace('#include <common>', common_vs)
-        .replace('#include <uv_vertex>', uv_vertex)
-        .replace('#include <beginnormal_vertex>', beginnormal_vertex)
-        .replace('#include <begin_vertex>', begin_vertex);
+    //     .replace('#include <uv_vertex>', uv_vertex)
+    //     .replace('#include <beginnormal_vertex>', beginnormal_vertex)
+        .replace('#include <begin_vertex>', begin_vertex)
+        // .replace('#include <project_vertex>', project_vertex);
+        // .replace('#include <begin_vertex>', begin_vertex);
 
     // shader.fragmentShader =
     //   shader.fragmentShader
@@ -73,5 +73,9 @@ export default class Index {
       //       gl_FragColor = vec4(abs(sin(uTime)), 0., 0., 1.);
       //     `);
 
+  }
+
+  initGeometry() {
+    const geometry = this.obj.geometry;
   }
 }

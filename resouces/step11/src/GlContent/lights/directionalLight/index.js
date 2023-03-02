@@ -4,6 +4,7 @@ import gui from '../../utils/gui'
 export default class SpotLight extends THREE.SpotLight {
   constructor(color = "#ffffff") {
     super(color, 2);
+    this.castShadow = true;
     this.angle = 20;
     this.penumbra = 0.4;
     this.decay = 2;
@@ -14,14 +15,6 @@ export default class SpotLight extends THREE.SpotLight {
       Math.floor(Math.random() * 10),
       Math.floor(Math.random() * 10),
       Math.floor(Math.random() * 10) );
-
-    this.castShadow = true;
-    this.shadow.autoUpdate = true;
-
-    // this.shadow.camera.near = 0.1;
-    // this.shadow.camera.far = 30;
-    // this.shadow.mapSize.width = 1024;
-    // this.shadow.mapSize.height = 1024;
     this.init();
     this.setGui();
   }
@@ -37,6 +30,7 @@ export default class SpotLight extends THREE.SpotLight {
     this.time += deltaTime;
     this._helper.update();
   }
+
 
   setGui() {
     const folder = gui.addFolder(`spotlight - ${this.id}`)

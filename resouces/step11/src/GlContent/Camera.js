@@ -16,7 +16,7 @@ export default class Camera extends THREE.PerspectiveCamera {
   }
 
   init() {
-    this.position.set(-1, 0.65, 0.8).normalize().multiplyScalar(5);
+    this.position.set(-1, 0.65, 0.8).normalize().multiplyScalar(15);
     this.lookAt(new THREE.Vector3(0, 0, 0));
     this.controls.target.y = 0.25
     this.controls.minDistance = 3

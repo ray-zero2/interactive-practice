@@ -1,3 +1,3 @@
-// begin_vertex.vs -- start
 #include <begin_vertex>
-// begin_vertex.vs -- end
+transformed = transformed + normalize(normal) * 0.3;
+// transformed = transformed + normalize(normal) * 2. * cos(uTime * 2.), 1.0 ;
