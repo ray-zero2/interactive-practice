@@ -1,0 +1,25 @@
+@use "sass:math";
+
+// :root {
+//   --bgColor: #000;
+//   --wordColor: #{$wordColor};
+//   font-family: 'Roboto', sans-serif;
+// }
+
+body {
+  background-color: #1c1c20;
+}
+* {
+  &, &::before, &::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+canvas, .canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  height: 100lvh;
+}
