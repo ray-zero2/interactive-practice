@@ -1,0 +1,23 @@
+{
+  "name": "step8",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.56.0",
+    "vite": "^3.2.2"
+  },
+  "dependencies": {
+    "@ray-zero2/animation-framer": "ray-zero2/animation-framer",
+    "gsap": "^3.11.4",
+    "lil-gui": "^0.18.0",
+    "postprocessing": "^6.30.1",
+    "three": "^0.150.1",
+    "vite-plugin-glsl": "^1.1.2"
+  }
+}

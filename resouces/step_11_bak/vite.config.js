@@ -4,7 +4,7 @@ import glsl from 'vite-plugin-glsl';
 export default defineConfig({
   base: './',
   build: {
-    outDir: '../../docs/step11',
+    outDir: '../../docs/step10',
   },
   plugins: [glsl()]
 });

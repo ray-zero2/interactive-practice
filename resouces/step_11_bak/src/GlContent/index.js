@@ -80,7 +80,7 @@ export default class WebGLContent {
     // this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     // this.renderer.toneMappingExposure = 6;
     // this.plane = new Plane(50, 50, 256, 256);
-    this.sphere = new Sphere();
+    this.sphere = new Sphere(this.renderer);
     this.floor = new Floor();
     this.scene.add(this.lights.spot1);
     //this.scene.add(this.plane.obj);
@@ -139,7 +139,7 @@ export default class WebGLContent {
 
   setLights() {
     const spot1 = this.lights.spot1;
-    spot1.angle = 0.383972435438752;
+    spot1.angle = 1.5707963267948966;
     spot1.distance = 50;
     spot1.position.set(0, 3, 4);
     spot1.penumbra = 0.628318530717959;
