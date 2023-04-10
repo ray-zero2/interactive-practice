@@ -10,7 +10,14 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@ray-zero2/animation-framer": "ray-zero2/animation-framer",
     "astro": "^2.2.0",
-    "sass": "^1.61.0"
+    "gsap": "^3.11.5",
+    "sass": "^1.61.0",
+    "three": "^0.151.3"
+  },
+  "devDependencies": {
+    "@types/three": "^0.150.1",
+    "vite-plugin-glsl": "^1.1.2"
   }
 }
