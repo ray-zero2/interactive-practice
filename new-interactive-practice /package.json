@@ -12,6 +12,7 @@
   "dependencies": {
     "@ray-zero2/animation-framer": "ray-zero2/animation-framer",
     "astro": "^2.2.0",
+    "astro-relative-links": "^0.3.3",
     "gsap": "^3.11.5",
     "postprocessing": "^6.30.2",
     "sass": "^1.61.0",
