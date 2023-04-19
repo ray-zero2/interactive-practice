@@ -2,17 +2,13 @@ import * as THREE from 'three';
 import Stats from 'three/examples/jsm/libs/stats.module'
 import Framer from '@ray-zero2/animation-framer';
 import gui from './utils/gui'
-// import { GUI } from 'lil-gui';
 import { EffectPass, DepthOfFieldEffect, VignetteEffect, EffectComposer, RenderPass, FXAAEffect, SepiaEffect, SMAAEffect } from 'postprocessing';
 
 import Camera from './Camera';
-// import Petal from './petals/Petal';
 
 import Plane from './plane';
 import Sphere from './sphere';
 import SpotLight from './lights/spotlight'
-import noiseTex from './textures/snoise.png';
-import petalTex from './textures/petal.png';
 
 export default class WebGLContent {
   private canvas: HTMLCanvasElement;
