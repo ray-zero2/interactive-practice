@@ -31,10 +31,9 @@ export default class SpotLight extends THREE.SpotLight {
     this._helper.update();
   }
 
-
   setGui() {
     const folder = gui.addFolder(`spotlight - ${this.id}`)
-    folder.add(this._helper, 'visible');
+    folder.add(this._helper, 'visible').onChange(gui.updateDisplay);
     folder.add(this, 'angle').min(0).max(Math.PI/2).step(Math.PI/90);
     folder.add(this, 'distance').min(1).max(180).step(1);
     folder.add(this.position, 'x').min(-50).max(50).step(1);
@@ -42,15 +41,5 @@ export default class SpotLight extends THREE.SpotLight {
     folder.add(this.position, 'z').min(-50).max(50).step(1);
     folder.add(this, 'penumbra').min(0).max(1).step(0.01);
     folder.add(this, 'decay').min(0).max(5).step(0.01);;
-      // .onChange(() => {
-      //   this.lookAt(new THREE.Vector3(0, 0, 0));
-      //   this._helper.update();
-      // });
-    // folder.add(dofEffect, 'bokehScale').min(0).max(20).step(0.5)
-    // folder
-    //   .add(dofEffect.circleOfConfusionMaterial, 'focalLength')
-    //   .min(0.01)
-    //   .max(0.15)
-    //   .step(0.01)
   }
 }

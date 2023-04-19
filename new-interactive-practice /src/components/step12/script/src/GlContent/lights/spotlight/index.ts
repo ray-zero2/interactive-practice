@@ -2,7 +2,9 @@ import * as THREE from 'three';
 import gui from '../../utils/gui'
 
 export default class SpotLight extends THREE.SpotLight {
-  constructor(color = "#ffffff") {
+  private _helper: THREE.SpotLightHelper;
+  time: number;
+  constructor(color: THREE.ColorRepresentation = "#ffffff") {
     super(color, 2);
     this.angle = 20;
     this.penumbra = 0.4;
@@ -14,7 +16,7 @@ export default class SpotLight extends THREE.SpotLight {
       Math.floor(Math.random() * 10),
       Math.floor(Math.random() * 10),
       Math.floor(Math.random() * 10) );
-
+    this.lookAt(new THREE.Vector3(0, 0, 0));
     this.castShadow = true;
     this.shadow.autoUpdate = true;
 
@@ -23,7 +25,7 @@ export default class SpotLight extends THREE.SpotLight {
     this.shadow.mapSize.width = 1024;
     this.shadow.mapSize.height = 1024;
     this.init();
-    this.setGui();
+    this.setGui(color);
   }
 
   init() {
@@ -33,12 +35,12 @@ export default class SpotLight extends THREE.SpotLight {
     return this._helper;
   }
 
-  update(deltaTime) {
+  update(deltaTime: number) {
     this.time += deltaTime;
     this._helper.update();
   }
 
-  setGui() {
+  setGui(color: string | THREE.ColorRepresentation) {
     const folder = gui.addFolder(`spotlight - ${this.id}`)
     folder.add(this._helper, 'visible');
     folder.add(this, 'angle').min(0).max(Math.PI/2).step(Math.PI/90);
@@ -47,16 +49,7 @@ export default class SpotLight extends THREE.SpotLight {
     folder.add(this.position, 'y').min(-50).max(50).step(1);
     folder.add(this.position, 'z').min(-50).max(50).step(1);
     folder.add(this, 'penumbra').min(0).max(1).step(0.01);
-    folder.add(this, 'decay').min(0).max(5).step(0.01);;
-      // .onChange(() => {
-      //   this.lookAt(new THREE.Vector3(0, 0, 0));
-      //   this._helper.update();
-      // });
-    // folder.add(dofEffect, 'bokehScale').min(0).max(20).step(0.5)
-    // folder
-    //   .add(dofEffect.circleOfConfusionMaterial, 'focalLength')
-    //   .min(0.01)
-    //   .max(0.15)
-    //   .step(0.01)
+    folder.add(this, 'decay').min(0).max(5).step(0.01);
+    folder.addColor({ string: color }, 'string' ).onChange((colorCode: THREE.ColorRepresentation) => this.color.set(colorCode));
   }
 }

@@ -1,7 +1,8 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 export default class Camera extends THREE.PerspectiveCamera {
+  time: number;
   constructor(options = {}) {
     super(options?.fov, options?.aspect, options?.near, options?.far);
     this.time = 0;
@@ -16,14 +17,14 @@ export default class Camera extends THREE.PerspectiveCamera {
   }
 
   init() {
-    this.position.set(-1, 0.65, 0.8).normalize().multiplyScalar(15);
-    this.lookAt(new THREE.Vector3(0, 0, 0));
-    this.controls.target.y = 0.25
-    this.controls.minDistance = 3
-    this.controls.maxDistance = 100;
-    this.controls.minPolarAngle = 0
-    this.controls.maxPolarAngle = Math.PI / 2 - 0.3
-    this.controls.enablePan = false
+    this.position.set(0.039, 3.2, 6.0);
+    this.lookAt(new THREE.Vector3(0, 0, -1.5));
+    // this.controls.target.y = 0.0
+    // this.controls.minDistance = 3
+    // this.controls.maxDistance = 100;
+    // this.controls.minPolarAngle = 0
+    // this.controls.maxPolarAngle = Math.PI / 2 - 0.3
+    // this.controls.enablePan = false
   }
 
   resize(resolution) {
@@ -31,12 +32,10 @@ export default class Camera extends THREE.PerspectiveCamera {
     this.updateProjectionMatrix();
   }
 
-  update(deltaTime) {
-    // const r = 20;
-    this.time += deltaTime;
-    // this.position.set( Math.sin( this.time * 0.2 ) * r, 10, Math.cos( this.time * 0.2 ) * r );
+  update(deltaTime: number) {
     // this.lookAt(0, 0, 0);
-    if (!this.controls) return;
-    this.controls.update();
+    // if (!this.controls) return;
+    // this.controls.update();
+    // console.log(this.position);
   }
 }
