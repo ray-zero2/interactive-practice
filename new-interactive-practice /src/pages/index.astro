@@ -73,7 +73,7 @@ const allPages = await Astro.glob<FrontMatter>('./**/*.astro');
       </h2>
     </li>
     {allPages.map(page => (
-      <li><h2><a href={page.url}>{page.title}</a></h2></li>
+      <li><h2><a href={page.url + '/index.html'}>{page.title}</a></h2></li>
     ))}
   </ol>
 </body>
