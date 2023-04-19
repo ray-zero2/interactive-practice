@@ -1,0 +1,39 @@
+---
+interface Props {
+  className?: string[];
+  bgColor?: string;
+  isFixed?: boolean;
+  zIndex?: number;
+}
+const {
+  className = [],
+  bgColor = 'transparent',
+  isFixed = true,
+  zIndex = 1
+ } = Astro.props;
+---
+
+<style lang="scss" define:vars={{ bgColor, zIndex }}>
+  div,canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    height: 100svh;
+    margin: 0;
+    padding: 0;
+  }
+  div {
+    background-color: var(--bgColor);
+    z-index: var(zIndex);
+    &.is-fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+</style>
+<div class={ isFixed ? 'is-fixed' : ''}>
+  <canvas class={className?.join(' ')}></canvas>
+</div>
