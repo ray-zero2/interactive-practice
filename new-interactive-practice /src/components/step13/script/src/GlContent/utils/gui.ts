@@ -90,4 +90,9 @@ const init = () => {
 
 init();
 
+if(process.env.NODE_ENV === 'development') {
+  gui.show( gui._hidden )
+  stats.dom.style.display = '';
+}
+
 export  { gui, stats };
