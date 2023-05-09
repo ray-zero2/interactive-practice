@@ -1,9 +1,7 @@
-// import * as THREE from "three";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 import hosmer_model  from './model/hosmer_draco.gltf?url';
-import gui from '../../utils/gui'
-import * as THREE from 'three';
+import type * as THREE from 'three';
 
 
 export default class Index {

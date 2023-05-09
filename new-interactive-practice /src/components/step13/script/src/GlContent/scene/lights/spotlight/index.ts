@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import type { Controller } from 'lil-gui';
-import gui from '../../../utils/gui'
+import { gui } from '../../../utils/gui'
 import { LAYER } from '../../../config';
 
 export default class SpotLight extends THREE.SpotLight {
@@ -52,7 +52,7 @@ export default class SpotLight extends THREE.SpotLight {
 
   protected setGui(color: string | THREE.ColorRepresentation) {
     const folder = gui.addFolder(`spotlight - ${this.id}`)
-
+    folder.close();
     this.guiControllers.push(
       folder.add(this._helper, 'visible'),
       folder.add(this, 'angle').min(0).max(Math.PI/2).step(Math.PI/90),

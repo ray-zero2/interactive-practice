@@ -1,7 +1,6 @@
 import * as THREE from 'three';
-import Stats from 'three/examples/jsm/libs/stats.module'
 import Framer from '@ray-zero2/animation-framer';
-import gui from './utils/gui'
+import { gui } from './utils/gui'
 
 import { Renderer } from './core/Renderer';
 import { Camera } from './core/Camera';
@@ -11,14 +10,13 @@ import PostProcess from './postprocesses';
 export default class WebGLContent {
   private canvas: HTMLCanvasElement;
   private time: number;
-  // add private properties
+
   private resolution: { x: number; y: number };
   private dpr: number;
   private renderer: Renderer;
   private mainScene: MainScene;
   private camera: Camera;
 
-  private stats: Stats;
   private framer: Framer;
   private gui: typeof gui;
   postProcess: PostProcess;
@@ -50,7 +48,6 @@ export default class WebGLContent {
       dampingFactor: 0.05
     });
 
-    this.stats = new Stats()
     this.gui = gui;
     this.framer = Framer.getInstance();
     this.mainScene = new MainScene();
@@ -68,7 +65,6 @@ export default class WebGLContent {
   }
 
   async init() {
-    document.body.appendChild(this.stats.dom);
     this.renderer.init();
     this.camera.init();
     this.mainScene.init();
@@ -86,7 +82,6 @@ export default class WebGLContent {
     this.camera.update(deltaTime);
     this.mainScene.update(deltaTime);
     this.postProcess.render(deltaTime);
-    this.stats.update();
   }
 
   handleResize() {

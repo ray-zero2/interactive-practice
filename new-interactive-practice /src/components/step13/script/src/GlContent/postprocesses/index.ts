@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { EffectPass, DepthOfFieldEffect, VignetteEffect, EffectComposer, RenderPass, FXAAEffect, SepiaEffect, SMAAEffect } from 'postprocessing';
-import gui from "../utils/gui";
+import { gui } from "../utils/gui";
 import { coreStore } from "../core/CoreStore";
 import { CORE_STORE_KEY, LAYER } from "../config";
 import type { Renderer } from "../core/Renderer";

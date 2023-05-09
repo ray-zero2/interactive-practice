@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import gBufferVertex from './glsl/gBuffer.vs';
 import gBufferFragment from './glsl/gBuffer.fs';
-import gui from '../../utils/gui'
+import { gui }from '../../utils/gui'
 
 
 export default class Index {
