@@ -6,6 +6,9 @@ import { gui }from '../../utils/gui'
 
 export default class Index {
   obj: THREE.Mesh<any, any>;
+  geometry: THREE.OctahedronGeometry;
+  material: THREE.MeshStandardMaterial;
+  time: number;
   constructor() {
     this.geometry = new THREE.OctahedronGeometry(1,0);
     this.material = new THREE.MeshStandardMaterial({
@@ -26,7 +29,7 @@ export default class Index {
     this.obj.scale.set(0.7, 0.7, 0.7);
   }
 
-  update(deltaTime) {
+  update(deltaTime: number) {
     this.time += deltaTime;
     this.obj.rotateY(deltaTime);
   }

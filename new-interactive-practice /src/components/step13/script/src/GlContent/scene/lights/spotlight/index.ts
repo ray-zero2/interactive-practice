@@ -7,12 +7,14 @@ export default class SpotLight extends THREE.SpotLight {
   private _helper: THREE.SpotLightHelper;
   private guiControllers: Controller[] = [];
   time: number;
+  lookAtPosition: THREE.Vector3;
   constructor(color: THREE.ColorRepresentation = "#ffffff") {
     super(color, 2);
     this.angle = 20;
     this.penumbra = 0.4;
     this.decay = 2;
     this.distance = 50;
+    this.lookAtPosition = new THREE.Vector3(0, 0, 0);
     this._helper = new THREE.SpotLightHelper( this );
     this._helper.layers.set(LAYER.helper);
     this._helper.visible = false;
@@ -21,7 +23,7 @@ export default class SpotLight extends THREE.SpotLight {
       Math.floor(Math.random() * 10),
       Math.floor(Math.random() * 10),
       Math.floor(Math.random() * 10) );
-    this.lookAt(new THREE.Vector3(0, 0, 0));
+    this.lookAt(this.lookAtPosition);
     this.castShadow = true;
     this.shadow.autoUpdate = true;
 

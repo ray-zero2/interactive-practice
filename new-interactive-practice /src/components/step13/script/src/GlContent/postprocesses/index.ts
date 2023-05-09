@@ -29,7 +29,6 @@ export default class PostProcess extends EffectComposer {
     this.dofEffect.target = new THREE.Vector3(0, 0, 0);
     const dofPass = new EffectPass(this.camera, this.dofEffect);
     this.addPass(dofPass);
-    // this.composer.addPass(new EffectPass(this.camera, new VignetteEffect()));
 
     const folder = gui.addFolder('Depth of field')
     folder
@@ -43,11 +42,11 @@ export default class PostProcess extends EffectComposer {
       .min(0.01)
       .max(0.15)
       .step(0.01)
-    console.log(this.camera);
+    // console.log(this.camera);
   }
 
   render(deltaTime: number) {
-    this.dofEffect!.target = this.camera!.lookAtPosition;
+    // this.dofEffect!.target = this.camera!.lookAtPosition;
     super.render(deltaTime);
   }
 

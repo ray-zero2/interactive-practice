@@ -20,6 +20,8 @@ export class Camera extends THREE.PerspectiveCamera {
     this.controls.enableDamping = options?.enableDamping || false;
     this.controls.dampingFactor = options?.dampingFactor ?? 0.2;
     this.updateProjectionMatrix();
+
+    console.log(this);
   }
 
   init() {
@@ -48,6 +50,9 @@ export class Camera extends THREE.PerspectiveCamera {
   update(deltaTime: number) {
     // this.lookAt(0, 0, 0);
     if (!this.controls) return;
+    // console.log(this.controls.target.x, this.controls.target.y, this.controls.target.z);
+    // console.log(this.controls.target.y, lookAtInverse.y);
+    // console.log(this.controls.target.z, lookAtInverse.z);
     this.controls.update();
     // console.log(this.position);
   }

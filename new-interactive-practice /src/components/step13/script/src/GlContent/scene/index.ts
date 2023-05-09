@@ -1,14 +1,11 @@
 import * as THREE from 'three';
 import Plane from './plane';
-import Sphere from './sphere';
 import Hosmer from './hosmer';
 import SpotLight from './lights/spotlight';
-// import gui from '../utils/gui'
 
 export default class MainScene extends THREE.Scene {
   time: number = 0;
   plane: Plane;
-  sphere: Sphere;
   lights: {
     [x: string]: any
   };
@@ -47,7 +44,6 @@ export default class MainScene extends THREE.Scene {
     this.time += deltaTime;
     Object.values(this.lights).forEach(light => light.update(deltaTime));
     this.plane!.update(deltaTime);
-    // this.sphere!.update(deltaTime);
   }
 
   setLights() {

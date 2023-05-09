@@ -27,10 +27,10 @@ export default class Index {
     loader.load(hosmer_model, (gltf) => {
       console.log('gltf', gltf);
       const obj = gltf.scene;
-      const scale = 0.02;
+      const scale = 0.05;
       obj.scale.set(scale*obj.scale.x, scale*obj.scale.y, scale * obj.scale.z)
       this.obj = obj;
-      this.obj.position.set(0, 1, 0);
+      this.obj.position.set(0, 2.5, 0);
       scene.add(this.obj);
     });
     // this.obj.castShadow = true;
