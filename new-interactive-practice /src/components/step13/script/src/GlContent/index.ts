@@ -1,11 +1,14 @@
-import * as THREE from 'three';
+import type * as THREE from 'three';
+import type { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import Framer from '@ray-zero2/animation-framer';
 import { gui } from './utils/gui'
 
 import { Renderer } from './core/Renderer';
-import { Camera } from './core/Camera';
 import MainScene  from './scene';
 import PostProcess from './postprocesses';
+import { coreStore } from './core/CoreStore';
+import { CORE_STORE_KEY } from './config';
+import { OrbitCamera } from './core/OrbitCamera';
 
 export default class WebGLContent {
   private canvas: HTMLCanvasElement;
@@ -15,11 +18,12 @@ export default class WebGLContent {
   private dpr: number;
   private renderer: Renderer;
   private mainScene: MainScene;
-  private camera: Camera;
+  // private camera: THREE.PerspectiveCamera | OrbitControls;
 
   private framer: Framer;
   private gui: typeof gui;
   postProcess: PostProcess;
+  orbitCamera: OrbitCamera;
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
@@ -36,18 +40,31 @@ export default class WebGLContent {
       depth: true,
       powerPreference: "high-performance",
     });
-
-    this.camera = new Camera({
+    coreStore.setObject(CORE_STORE_KEY.mainRenderer, this.renderer);
+    // this.camera = new Camera({
+    //   fov: 30,
+    //   aspect: this.resolution.x / this.resolution.y,
+    //   far: 100,
+    //   near: 0.1,
+    // });
+    // this.controls = this.camera.getControls({
+    //   domElement: canvas,
+    //   enableDamping: true,
+    //   dampingFactor: 0.05
+    // })
+    // coreStore.setObject(CORE_STORE_KEY.cameraControls, this.controls);
+    this.orbitCamera = new OrbitCamera({
       fov: 30,
       aspect: this.resolution.x / this.resolution.y,
       far: 100,
-      near: 0.1,
+      near: 0.1
+    }, {
       canvas,
-      enableControl: true,
       enableDamping: true,
       dampingFactor: 0.05
     });
-
+    coreStore.setObject(CORE_STORE_KEY.mainCamera, this.orbitCamera);
+  
     this.gui = gui;
     this.framer = Framer.getInstance();
     this.mainScene = new MainScene();
@@ -59,14 +76,14 @@ export default class WebGLContent {
     this.resolution.x = width;
     this.resolution.y = height;
     this.dpr = Math.min(window.devicePixelRatio , 2);
-    this.camera.resize(this.resolution);
+    this.orbitCamera.resize(this.resolution);
     this.renderer.resize(this.resolution, this.dpr)
     this.postProcess.resize(this.resolution);
   }
 
   async init() {
     this.renderer.init();
-    this.camera.init();
+    this.orbitCamera.init();
     this.mainScene.init();
     this.postProcess.init(this.mainScene);
     this.bind();
@@ -79,7 +96,7 @@ export default class WebGLContent {
 
   animate({ deltaTime }: { deltaTime: number }) {
     this.time += deltaTime;
-    this.camera.update(deltaTime);
+    this.orbitCamera.update();
     this.mainScene.update(deltaTime);
     this.postProcess.render(deltaTime);
   }

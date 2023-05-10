@@ -4,30 +4,30 @@ import { gui } from "../utils/gui";
 import { coreStore } from "../core/CoreStore";
 import { CORE_STORE_KEY, LAYER } from "../config";
 import type { Renderer } from "../core/Renderer";
-import type { Camera } from "../core/Camera";
+import type { OrbitCamera } from "../core/OrbitCamera";
 
 export default class PostProcess extends EffectComposer {
-  camera: Camera | undefined;
   renderer: Renderer | undefined;
   dofEffect: DepthOfFieldEffect | undefined;
+  orbitCamera: OrbitCamera | undefined;
   constructor() {
     super();
   }
 
   init(mainScene: THREE.Scene) {
     this.renderer = coreStore.getObject(CORE_STORE_KEY.mainRenderer) as Renderer;
-    this.camera = coreStore.getObject(CORE_STORE_KEY.mainCamera) as Camera;
-  
-    this.setRenderer(this.renderer);
-    this.addPass(new RenderPass(mainScene, this.camera));
+    this.orbitCamera = coreStore.getObject(CORE_STORE_KEY.mainCamera) as OrbitCamera;
 
-    this.dofEffect = new DepthOfFieldEffect(this.camera, {
+    this.setRenderer(this.renderer);
+    this.addPass(new RenderPass(mainScene, this.orbitCamera.getCamera()));
+
+    this.dofEffect = new DepthOfFieldEffect(this.orbitCamera.getCamera(), {
       focalLength: 0.07,
       bokehScale: 0,
       resolutionScale: 0.25
     });
     this.dofEffect.target = new THREE.Vector3(0, 0, 0);
-    const dofPass = new EffectPass(this.camera, this.dofEffect);
+    const dofPass = new EffectPass(this.orbitCamera.getCamera(), this.dofEffect);
     this.addPass(dofPass);
 
     const folder = gui.addFolder('Depth of field')

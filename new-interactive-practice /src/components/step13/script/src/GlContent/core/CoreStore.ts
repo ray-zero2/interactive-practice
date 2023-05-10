@@ -1,4 +1,7 @@
-type CoreObject = THREE.WebGLRenderer | THREE.Camera;
+import type * as THREE from "three";
+import type { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+
+type CoreObject = THREE.WebGLRenderer | THREE.Camera | OrbitControls;
 
 type Store = {
   [key: string]: CoreObject
