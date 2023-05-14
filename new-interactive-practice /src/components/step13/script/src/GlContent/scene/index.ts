@@ -1,23 +1,24 @@
 import * as THREE from 'three';
-import Plane from './plane';
-import Hosmer from './hosmer';
 import SpotLight from './lights/spotlight';
+import { Floor } from './floor';
+import { Box } from './box';
 
 export default class MainScene extends THREE.Scene {
   time: number = 0;
-  plane: Plane;
   lights: {
     [x: string]: any
   };
-  hosmer: Hosmer;
+  floor: Floor;
+  box: Box;
 
   constructor() {
     super();
-    this.plane = new Plane(10, 10, 256 * 2, 256 * 2);
-    this.add(this.plane.obj);
 
-    // this.sphere = new Sphere();
-    // this.add(this.sphere.obj);
+    this.floor = new Floor();
+    this.add(this.floor.obj);
+
+    this.box = new Box()
+    this.add(this.box.obj);
 
     this.lights = {
       spot1: new SpotLight(),
@@ -32,11 +33,6 @@ export default class MainScene extends THREE.Scene {
       this.lights.spot3,
       this.lights.spot3.getHelper()
     );
-    this.hosmer = new Hosmer();
-    this.hosmer.init()
-      .then(() => {
-        this.add(this.hosmer.obj);
-      });
   }
 
   init() {
@@ -46,7 +42,8 @@ export default class MainScene extends THREE.Scene {
   update(deltaTime: number) {
     this.time += deltaTime;
     Object.values(this.lights).forEach(light => light.update(deltaTime));
-    this.plane!.update(deltaTime);
+    this.floor.update(deltaTime);
+    this.box.update(deltaTime);
   }
 
   setLights() {

@@ -32,13 +32,13 @@ export class OrbitCamera extends OrbitControls {
   init() {
     this.enableDamping = true;
     this.dampingFactor = 0.05;
-    this.minDistance = 3
-    this.maxDistance = 100;
-    this.minPolarAngle = 0
-    this.maxPolarAngle = Math.PI / 2 - 0.3
+    this.minDistance = 0.1
+    this.maxDistance = 1000;
+    // this.minPolarAngle = 0
+    // this.maxPolarAngle = Math.PI / 2 - 0.3
     // this.enablePan = false
-    this.object.position.set(0, 8, -15);
-    this.target.set(0, 2, 1);
+    this.object.position.set(0, 1.5, 7.5);
+    this.target.set(0, 3.5, 0);
   }
 
   resize(resolution: {x: number, y: number}) {

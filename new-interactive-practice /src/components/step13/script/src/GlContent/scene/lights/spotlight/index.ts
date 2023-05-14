@@ -12,7 +12,7 @@ export default class SpotLight extends THREE.SpotLight {
     super(color, 2);
     this.angle = 20;
     this.penumbra = 0.4;
-    this.decay = 2;
+    this.decay = 1;
     this.distance = 50;
     this.lookAtPosition = new THREE.Vector3(0, 0, 0);
     this._helper = new THREE.SpotLightHelper( this );

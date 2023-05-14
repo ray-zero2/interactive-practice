@@ -54,9 +54,9 @@ export default class WebGLContent {
     // })
     // coreStore.setObject(CORE_STORE_KEY.cameraControls, this.controls);
     this.orbitCamera = new OrbitCamera({
-      fov: 30,
+      fov: 45,
       aspect: this.resolution.x / this.resolution.y,
-      far: 100,
+      far: 1000,
       near: 0.1
     }, {
       canvas,
