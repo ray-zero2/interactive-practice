@@ -33,7 +33,10 @@ export default class MainScene extends THREE.Scene {
       this.lights.spot3.getHelper()
     );
     this.hosmer = new Hosmer();
-    this.hosmer.init(this);
+    this.hosmer.init()
+      .then(() => {
+        this.add(this.hosmer.obj);
+      });
   }
 
   init() {
