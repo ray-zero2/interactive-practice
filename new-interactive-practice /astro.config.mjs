@@ -1,7 +1,8 @@
 import { defineConfig } from 'astro/config';
 import glsl from 'vite-plugin-glsl';
-
 import relativeLinks from "astro-relative-links";
+
+import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,5 +16,7 @@ export default defineConfig({
     },
     plugins: [glsl()]
   },
-  integrations: [relativeLinks()]
+  integrations: [relativeLinks(), image({
+    serviceEntryPoint: '@astrojs/image/sharp'
+  })]
 });
