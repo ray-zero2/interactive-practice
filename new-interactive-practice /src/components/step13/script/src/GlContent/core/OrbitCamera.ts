@@ -30,6 +30,7 @@ export class OrbitCamera extends OrbitControls {
   }
 
   init() {
+    this.enabled = false;
     this.enableDamping = true;
     this.dampingFactor = 0.05;
     this.minDistance = 0.1
@@ -37,7 +38,7 @@ export class OrbitCamera extends OrbitControls {
     // this.minPolarAngle = 0
     // this.maxPolarAngle = Math.PI / 2 - 0.3
     // this.enablePan = false
-    this.object.position.set(0, 1.5, 7.5);
+    this.object.position.set(0, -7.5, 0);
     this.target.set(0, 3.5, 0);
   }
 
@@ -49,6 +50,7 @@ export class OrbitCamera extends OrbitControls {
 
   setGui() {
     const folder = gui.addFolder(`OrbitCamera - ${this.object.id}`);
+    folder.add(this, 'enabled').listen();
     folder.add(this.object.position, 'x').name('positionX').listen();
     folder.add(this.object.position, 'y').name('positionY').listen();
     folder.add(this.object.position, 'z').name('positionZ').listen();

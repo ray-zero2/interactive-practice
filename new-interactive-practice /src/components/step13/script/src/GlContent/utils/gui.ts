@@ -1,5 +1,5 @@
 import { GUI } from 'lil-gui';
-import Stats from 'three/examples/jsm/libs/stats.module';
+import Stats from 'stats.js';
 import Framer from '@ray-zero2/animation-framer';
 
 const KEY = {
@@ -90,9 +90,6 @@ const init = () => {
 
 init();
 
-if(process.env.NODE_ENV === 'development') {
-  gui.show( gui._hidden )
-  stats.dom.style.display = '';
-}
+// 
 
 export  { gui, stats };
