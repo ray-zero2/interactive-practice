@@ -1,0 +1,1 @@
+*,*:before,*:after{box-sizing:border-box}div:where(.astro-HKLC3FWQ),canvas:where(.astro-HKLC3FWQ){display:block;width:100%;height:100%;height:100svh;margin:0;padding:0}div:where(.astro-HKLC3FWQ){background-color:var(--bgColor);z-index:var(zIndex)}div:where(.astro-HKLC3FWQ).is-fixed{position:fixed;inset:0}
