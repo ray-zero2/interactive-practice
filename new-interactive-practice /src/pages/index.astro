@@ -72,9 +72,10 @@ const allPages = await Astro.glob<FrontMatter>('./**/*.astro');
         <a href="./step11/index.html">movin'</a>
       </h2>
     </li>
-    {allPages.map(page => (
-      <li><h2><a href={page.url + '/index.html'}>{page.title}</a></h2></li>
-    ))}
+    {allPages.map(page => {
+      if(page.url?.includes('develop')) return
+      return (<li><h2><a href={page.url + '/index.html'}>{page.title}</a></h2></li>)
+    })}
   </ol>
 </body>
 </html>

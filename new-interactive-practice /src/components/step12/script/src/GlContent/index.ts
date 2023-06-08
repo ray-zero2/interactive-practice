@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import Stats from 'three/examples/jsm/libs/stats.module'
+import Stats from 'stats.js'
 import Framer from '@ray-zero2/animation-framer';
 import gui from './utils/gui'
 import { EffectPass, DepthOfFieldEffect, VignetteEffect, EffectComposer, RenderPass, FXAAEffect, SepiaEffect, SMAAEffect } from 'postprocessing';

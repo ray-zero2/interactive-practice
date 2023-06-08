@@ -10,12 +10,16 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/image": "^0.16.8",
     "@ray-zero2/animation-framer": "ray-zero2/animation-framer",
-    "astro": "^2.2.0",
+    "astro": "^2.4.5",
     "astro-relative-links": "^0.3.3",
     "gsap": "^3.11.5",
+    "ore-three-ts": "^2.3.0",
     "postprocessing": "^6.30.2",
     "sass": "^1.61.0",
+    "sharp": "^0.32.1",
+    "stats.js": "^0.17.0",
     "three": "^0.151.3"
   },
   "devDependencies": {
