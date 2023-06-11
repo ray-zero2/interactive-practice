@@ -29,10 +29,10 @@ jobs:
           node-version: 16
       - name: Install dependencies
         run: npm install
-        working-directory: new-interactive-practice
+        working-directory: ../new-interactive-practice
       - name: Build Astro
         run: npm run build
-        working-directory: new-interactive-practice
+        working-directory: ../new-interactive-practice
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
