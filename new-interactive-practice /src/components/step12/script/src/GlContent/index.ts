@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import Stats from 'stats.js'
-import Framer from '@ray-zero2/animation-framer';
+import Framer from '@packages/animationFramer';
 import gui from './utils/gui'
 import { EffectPass, DepthOfFieldEffect, VignetteEffect, EffectComposer, RenderPass, FXAAEffect, SepiaEffect, SMAAEffect } from 'postprocessing';
 
@@ -93,7 +93,7 @@ export default class WebGLContent {
     this.plane = new Plane(10, 10, 256 * 2, 256 * 2);
     this.scene.add(this.plane.obj);
 
-    this.sphere = new Sphere(this.renderer);
+    this.sphere = new Sphere();
     this.scene.add(this.sphere.obj);
 
     this.scene.add(this.lights.spot1);

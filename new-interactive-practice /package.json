@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@astrojs/image": "^0.16.8",
-    "@ray-zero2/animation-framer": "ray-zero2/animation-framer",
     "astro": "^2.4.5",
     "astro-relative-links": "^0.3.3",
     "gsap": "^3.11.5",
