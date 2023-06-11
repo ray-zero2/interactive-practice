@@ -6,7 +6,7 @@ import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
-  outDir: '../docs/',
+  outDir: '../dist/',
   "paths": {
     "@scripts/*": ["src/scripts/*"]
   },
