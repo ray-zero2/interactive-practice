@@ -12,11 +12,14 @@ export default defineConfig({
   },
   vite: {
     build: {
-      emptyOutDir: false
+      emptyOutDir: true
     },
     plugins: [glsl()]
   },
   integrations: [relativeLinks(), image({
     serviceEntryPoint: '@astrojs/image/sharp'
-  })]
+  })],
+  build: {
+    assets: 'assets'
+  }
 });
