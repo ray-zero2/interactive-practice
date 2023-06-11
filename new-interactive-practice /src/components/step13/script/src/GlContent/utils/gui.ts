@@ -1,6 +1,6 @@
 import { GUI } from 'lil-gui';
 import Stats from 'stats.js';
-import Framer from '@ray-zero2/animation-framer';
+import Framer from '@packages/animationFramer';
 
 const KEY = {
   preset: 'guiPreset'

@@ -1,6 +1,6 @@
 import type * as THREE from 'three';
 import type { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import Framer from '@ray-zero2/animation-framer';
+import Framer from '@packages/animationFramer';
 import { gui } from './utils/gui'
 
 import { Renderer } from './core/Renderer';
