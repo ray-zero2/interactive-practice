@@ -1,0 +1,50 @@
+---
+import Panel from "./Panel.astro"
+
+export const COLUMN_NUM = 10;
+export const ROW_NUM = 10;
+const PANEL_NUM = COLUMN_NUM * ROW_NUM;
+const maxValue = Math.max(COLUMN_NUM, ROW_NUM);
+---
+
+
+<div class="wrapper" data-maxValue=`${maxValue}`>
+  {
+    [...new Array(PANEL_NUM)].map((item, index) => {
+      return <Panel />
+    })
+  }
+</div>
+
+<style lang="scss" define:vars={{ COLUMN_NUM, ROW_NUM }}>
+
+  body {
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+    overflow: clip;
+    margin: 0;
+  }
+
+  .wrapper {
+    display: grid;
+    gap: 0px;
+    grid-template-columns: repeat(var(--COLUMN_NUM), 1fr);
+    grid-template-rows: repeat(var(--ROW_NUM), 1fr);
+    width: 100%;
+    height: 100%;
+  }
+  // .obj {
+  //   width: 200px;
+  //   aspect-ratio: 1;
+  //   border: 1px solid #000;
+  //   background: #fff;
+
+  //   &[data-index="0"] { filter: drop-shadow(0px 0px 5px black); }
+  //   &[data-index="1"] { filter: drop-shadow(0px 0px 5px black); }
+  //   &[data-index="2"] { filter: drop-shadow(0px 0px 5px black); }
+  // }
+</style>
+
+<script lang="ts">
+</script>

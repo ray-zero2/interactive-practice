@@ -1,0 +1,14 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Step14 from '../../components/step14/index.astro';
+import { pageData } from "../pageData";
+const id = 14;
+
+const index = id - 1;
+const {title} = pageData[index];
+
+---
+
+<Layout title={title}>
+  <Step14 />
+</Layout>

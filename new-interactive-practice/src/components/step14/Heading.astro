@@ -1,0 +1,35 @@
+---
+import { pageData } from "@src/pages/pageData";
+const id = 14;
+
+const index = id - 1;
+const data = pageData[index];
+const title = data.title;
+const desc = data.desc;
+
+---
+<style lang="scss">
+section {
+  text-align: left;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-feature-settings: "palt";
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: fit-content;
+  color: #666;
+}
+h1 {
+  font-size: 18px;
+  margin: 0;
+}
+p {
+  margin: 0;
+  margin-top: 8px;
+  font-size: 14px;
+}
+</style>
+<section>
+  <h1>{title}</h1>
+  <p>{desc}</p>
+</section>
