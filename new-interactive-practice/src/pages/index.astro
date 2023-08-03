@@ -1,65 +1,5 @@
 ---
-// import type { AstroInstance } from "astro";
-
-// interface FrontMatter extends AstroInstance {
-//   title: string
-// }
-// const allPages = await Astro.glob<FrontMatter>('./**/*.astro');
-
-const allPages = [
-  {
-    title: 'Follow',
-    url: './step1/index.html'
-  },
-  {
-    title: 'Boundary',
-    url: './step2/index.html'
-  },
-  {
-    title: 'R-G-B',
-    url: './step3/index.html'
-  },
-  {
-    title: 'floating',
-    url: './step4/index.html'
-  },
-  {
-    title: 'Hover',
-    url: './step5/index.html'
-  },
-  {
-    title: 'Awards',
-    url: './step6/index.html'
-  },
-  {
-    title: 'Smooth',
-    url: './step7/index.html'
-  },
-  {
-    title: 'F.P. Rings',
-    url: './step8/index.html'
-  },
-  {
-    title: 'yura yura',
-    url: './step9/index.html'
-  },
-  {
-    title: 'human',
-    url: './step10/index.html'
-  },
-  {
-    title: 'movin\'',
-    url: './step11/index.html'
-  },
-  {
-    title: 'The Fusion of Opposites',
-    url: './step12/index.html'
-  },
-  {
-    title: '[wip] rotaion',
-    url: './step13/index.html'
-  },
-]
+import {pageData} from './pageData'
 ---
 <!DOCTYPE html>
 <html lang="ja">
@@ -72,10 +12,10 @@ const allPages = [
 <body>
   <h1>interactive</h1>
   <ol>
-    { allPages.map(page => (
+    { pageData.map(data => (
       <li>
         <h2>
-          <a href={page.url}>{page.title}</a>
+          <a href={data.url}>{data.title}</a>
         </h2>
       </li>
     )) }
