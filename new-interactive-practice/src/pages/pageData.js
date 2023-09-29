@@ -45,16 +45,22 @@ export const pageData = [
   },
   {
     title: 'The Fusion of Opposites',
+    desc: 'Conflicting hearts, A never-ending duality, torn apart.',
     url: './step12/index.html'
   },
   {
-    title: '[wip] rotaion',
-    desc: '[wip] rotaion',
+    title: 'Dimension',
+    desc: 'from several points of view',
     url: './step13/index.html'
   },
   {
-    title: '[wip] css filter',
-    desc: 'css filterを使ってみる',
+    title: 'Plane',
+    desc: 'Invisible lawn. Simple dialogue.',
     url: './step14/index.html',
+  },
+  {
+    title: 'Moment',
+    desc: 'whisper',
+    url: './step15/index.html',
   },
 ]
