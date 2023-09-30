@@ -30,7 +30,6 @@
     width: 80vmin;
     aspect-ratio: 1;
     background: #00061C;
-    color: #272727;
   }
 
   .square-inner {
@@ -48,13 +47,32 @@
     font-family: 'Roboto Mono', monospace;
     line-height: 1.2;
     text-align: justify;
-    height: 18em;
-    overflow: hidden;
+    /* height: 18em; */
+    height: fit-content;
+    max-height: 18em;
+    /* overflow: hidden; */
   }
 
-  .words,
-  .words span {
+</style>
+
+<style is:global lang="scss">
+  span {
     text-transform: uppercase;
+    color: #272727;
+    opacity: 0.35;
+    transition:
+      opacity #{var(--delay)} cubic-bezier(0.26, 0.06, 0, 1),
+      color #{var(--delay)} cubic-bezier(0.26, 0.06, 0, 1);
+    &.active-primary {
+      color: #D4AF37;
+      opacity: 1;
+      // transition-delay: #{var(--delay)}s;
+    }
+    &.active-secondary {
+      color: #B3B3B3;
+      opacity: 1;
+      // transition-delay: #{var(--delay)}s;
+    }
   }
 </style>
 

@@ -5,24 +5,60 @@ const ACTIVE_CLASS_NAMES = {
 
 export default class Letter {
   letter: HTMLElement;
+  isActive: boolean;
+  rect: DOMRect;
+  parent: HTMLElement;
+  parentRect: DOMRect;
   constructor(letter: HTMLElement) {
     this.letter = letter;
+    this.rect = this.letter.getBoundingClientRect();
+    this.parent = this.letter.parentElement!;
+    this.parentRect = this.parent.getBoundingClientRect();
+    this.isActive = false;
+
+    this.letter.style.setProperty('--delay', `${Math.random() * 2.5 + 0.5}s`);
   }
 
   matches(testWord: string) {
     return this.letter.textContent === testWord;
   }
 
+  getText() {
+    const text = this.letter.textContent;
+    return text || '';
+  }
+
   activate(order: keyof typeof ACTIVE_CLASS_NAMES) {
+    this.isActive = true;
     this.letter.classList.add(ACTIVE_CLASS_NAMES[order]);
   }
 
   inactivate() {
+    this.isActive = false;
     this.letter.classList.remove(ACTIVE_CLASS_NAMES.primary);
     this.letter.classList.remove(ACTIVE_CLASS_NAMES.secondary);
   }
 
-  isActive() {
-    return this.letter.classList.contains(ACTIVE_CLASS_NAMES.primary) || this.letter.classList.contains(ACTIVE_CLASS_NAMES.secondary);
+  delete() {
+    this.letter.remove();
+  }
+
+  isVisible() {
+    return (
+      // this.rect.top >= this.parentRect.top &&
+      // this.rect.bottom <= this.parentRect.bottom &&
+      // this.rect.left >= this.parentRect.left &&
+      // this.rect.right <= this.parentRect.right
+      this.rect.bottom <= this.parentRect.bottom
+    )
+  }
+
+  handleIntersection(entries: IntersectionObserverEntry[]) {
+  }
+
+  observe() {
+  }
+
+  unobserve() {
   }
 }
