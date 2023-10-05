@@ -1,17 +1,19 @@
 ---
-
+import Css3d from "./Css3d.astro";
 
 ---
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 <div class="bg">
-  <div class="square">
-    <div class="square-inner">
-      <p class="words js-words">
-      </p>
+  <Css3d>
+    <div class="square">
+      <div class="square-inner">
+        <p class="words js-words">
+        </p>
+      </div>
     </div>
-  </div>
+  </Css3d>
 </div>
 
 <style>
@@ -50,6 +52,7 @@
     /* height: 18em; */
     height: fit-content;
     max-height: 18em;
+    user-select: none;
     /* overflow: hidden; */
   }
 

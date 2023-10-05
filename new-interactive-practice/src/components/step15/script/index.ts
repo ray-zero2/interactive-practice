@@ -38,7 +38,6 @@ function init() {
     const hour = convert24HourTo12HourInWords(data.getHours());
     const minute = convertMinutesToClockFaceWords(data.getMinutes());
     if(lastHour === hour && lastMinute === minute) return;
-    console.log({hour, minute});
 
     shownLetters.forEach(letter => letter.inactivate());
 
@@ -76,7 +75,6 @@ function init() {
       if(matchArrays.length === 0) location.reload();
       const randomIndex = Math.floor(Math.random() * matchArrays.length);
       const match = matchArrays[randomIndex];
-      console.log(match);
       match.letter.activate('secondary');
     });
 

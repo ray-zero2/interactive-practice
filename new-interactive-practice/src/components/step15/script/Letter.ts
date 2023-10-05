@@ -16,7 +16,7 @@ export default class Letter {
     this.parentRect = this.parent.getBoundingClientRect();
     this.isActive = false;
 
-    this.letter.style.setProperty('--delay', `${Math.random() * 2.5 + 0.5}s`);
+    this.letter.style.setProperty('--delay', `${Math.random() * 4 + 1}s`);
   }
 
   matches(testWord: string) {
@@ -45,10 +45,6 @@ export default class Letter {
 
   isVisible() {
     return (
-      // this.rect.top >= this.parentRect.top &&
-      // this.rect.bottom <= this.parentRect.bottom &&
-      // this.rect.left >= this.parentRect.left &&
-      // this.rect.right <= this.parentRect.right
       this.rect.bottom <= this.parentRect.bottom
     )
   }
