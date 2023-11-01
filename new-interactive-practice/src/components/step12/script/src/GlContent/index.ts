@@ -42,7 +42,7 @@ export default class WebGLContent {
       // antialias: false,
       // stencil: false,
       depth: true,
-      // powerPreference: "high-performance",
+      powerPreference: "high-performance",
     });
     this.renderer.domElement.style.width = "100%";
     this.renderer.domElement.style.height = "100%";
@@ -54,13 +54,13 @@ export default class WebGLContent {
       near: 0.1,
       canvas,
       enableControl: false,
-      // enableDamping: true,
+      enableDamping: false,
       // dampingFactor: 0.05
     });
     this.lights = {
       spot1: new SpotLight(),
-      spot2: new SpotLight('#fda5b4'),
-      spot3: new SpotLight('#66ffff'),
+      spot2: new SpotLight('#ffe5e5'),
+      spot3: new SpotLight('#d1ffff'),
     };
     this.plane = null;
     this.sphere = null;
@@ -86,7 +86,7 @@ export default class WebGLContent {
 
   async init() {
     document.body.appendChild(this.stats.dom);
-    this.renderer.outputEncoding = THREE.sRGBEncoding;
+    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 2.5;
 
@@ -146,19 +146,22 @@ export default class WebGLContent {
     spot1.distance = 50;
     spot1.position.set(0, 3, 4);
     spot1.penumbra = 0.628318530717959;
-    spot1.decay = 2;
+    spot1.decay = 0;
+    spot1.intensity = 8;
 
     spot2.angle = 0.80285;
     spot2.distance = 26;
     spot2.position.set(-8, 2, -5);
     spot2.penumbra = 0.52;
-    spot2.decay = 2.5;
+    spot2.decay = 0;
+    spot2.intensity = 2.66;
 
     spot3.angle = 0.94;
     spot3.distance = 19;
     spot3.position.set(7, 7, -2);
     spot3.penumbra = 1;
-    spot3.decay = 0.95;
+    spot3.decay = 0;
+    spot3.intensity = 2.4;
 
     // spot1.setGui();
     // spot2.setGui();
@@ -188,9 +191,9 @@ export default class WebGLContent {
       })
     folder.add(dofEffect, 'bokehScale').min(0).max(20).step(0.5)
     folder
-      .add(dofEffect.circleOfConfusionMaterial, 'focalLength')
+      .add(dofEffect.cocMaterial, 'focalLength')
       .min(0.01)
-      .max(0.15)
+      .max(0.5)
       .step(0.01)
   }
 
