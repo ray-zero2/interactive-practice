@@ -8,6 +8,7 @@ export default defineConfig({
   "paths": {
     "@scripts/*": ["src/scripts/*"]
   },
+  output: "static",
   vite: {
     build: {
       emptyOutDir: true
@@ -16,5 +17,8 @@ export default defineConfig({
   },
   build: {
     assets: 'assets'
-  }
+  },
+  experimental: {
+    optimizeHoistedScript: true,
+  },
 });
