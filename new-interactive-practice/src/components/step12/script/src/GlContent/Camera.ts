@@ -1,9 +1,20 @@
 import * as THREE from 'three';
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 export default class Camera extends THREE.PerspectiveCamera {
   time: number;
-  constructor(options = {}) {
+  enableControl: boolean | undefined;
+  controls: any;
+  constructor(options: {
+    fov?: number;
+    aspect?: number;
+    near?: number;
+    far?: number;
+    canvas?: HTMLCanvasElement;
+    enableControl?: boolean;
+    enableDamping?: boolean;
+    dampingFactor?: number;
+  }) {
     super(options?.fov, options?.aspect, options?.near, options?.far);
     this.time = 0;
     this.enableControl = options?.enableControl;
@@ -27,7 +38,7 @@ export default class Camera extends THREE.PerspectiveCamera {
     // this.controls.enablePan = false
   }
 
-  resize(resolution) {
+  resize(resolution: { x: number; y: number }) {
     this.aspect = resolution.x / resolution.y;
     this.updateProjectionMatrix();
   }

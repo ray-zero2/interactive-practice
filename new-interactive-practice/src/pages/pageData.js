@@ -63,4 +63,9 @@ export const pageData = [
     desc: 'whisper',
     url: './step15/index.html',
   },
+  {
+    title: 'movin\' ver.2',
+    desc: 'When we feel our body, where is it?',
+    url: './step16/index.html',
+  },
 ]

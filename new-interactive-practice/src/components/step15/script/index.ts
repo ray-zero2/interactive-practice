@@ -4,13 +4,11 @@ import { WORDS } from "./const";
 import { fisherYatesShuffle } from './utils';
 
 const clock = new ClockEvent('second');
-
 function createWordList() {
   const words = fisherYatesShuffle(fisherYatesShuffle(WORDS));
   words.length = 50;
   return words.map(word => `${word}`).join(' ');
 }
-
 
 function init() {
   const wordListWrapper = document.querySelector<HTMLElement>('.js-words');

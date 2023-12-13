@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import gui from '../../utils/gui'
 
 export default class SpotLight extends THREE.SpotLight {
+  private _helper: THREE.SpotLightHelper;
+  time: number;
   constructor(color = "#ffffff") {
     super(color, 2);
     this.castShadow = true;
@@ -26,14 +28,14 @@ export default class SpotLight extends THREE.SpotLight {
     return this._helper;
   }
 
-  update(deltaTime) {
+  update(deltaTime: number) {
     this.time += deltaTime;
     this._helper.update();
   }
 
   setGui() {
     const folder = gui.addFolder(`spotlight - ${this.id}`)
-    folder.add(this._helper, 'visible').onChange(gui.updateDisplay);
+    // folder.add(this._helper, 'visible').onChange(gui.updateDisplay);
     folder.add(this, 'angle').min(0).max(Math.PI/2).step(Math.PI/90);
     folder.add(this, 'distance').min(1).max(180).step(1);
     folder.add(this.position, 'x').min(-50).max(50).step(1);

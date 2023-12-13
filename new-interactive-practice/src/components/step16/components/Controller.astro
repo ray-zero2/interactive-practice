@@ -1,0 +1,91 @@
+---
+---
+
+<div class="controller js-controller">
+  <div class="inner">
+    <div class="buttons">
+      <button class="button js-button" data-type="play">play</button>
+      <button class="button js-button" data-type="stop">stop</button>
+    </div>
+    <div class="inputWrapper">
+      <input type="range" id="volume" class="volume js-volume" name="volume" min="0" max="100" value="100" />
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .controller {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 4px 8px;
+    background: transparent;
+    width: fit-content;
+    height: fit-content;
+    opacity: 0.4; // スマホだと目立つため少し見えづらくする
+
+    @media (hover: hover) and (pointer: fine) {
+      opacity: 0.2;
+      transition: opacity 0.2s ease-in-out;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .button {
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    size: 10px;
+    padding: 4px 8px;
+    color: #bbb;
+    background: transparent;
+    border: none;
+    margin: 0 2px;
+  }
+
+
+  .inputWrapper {
+    padding: 0;
+    width: fit-content;
+    height: fit-content;
+    margin-top: -4px;
+  }
+
+  .volume {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #c7c7c7;
+    height: 2px;
+    width: 100%;
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      position: relative;
+      border: none;
+      width: 12px;
+      height: 12px;
+      display: block;
+      background-color: #aaa;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+    }
+  }
+</style>
+
+```
