@@ -8,6 +8,7 @@ export default defineConfig({
   "paths": {
     "@scripts/*": ["src/scripts/*"]
   },
+  integrations: [relativeLinks()],
   output: "static",
   vite: {
     build: {
@@ -16,7 +17,7 @@ export default defineConfig({
     plugins: [glsl()]
   },
   build: {
-    assets: 'assets'
+    assets: 'assets',
   },
   experimental: {
     optimizeHoistedScript: true,
