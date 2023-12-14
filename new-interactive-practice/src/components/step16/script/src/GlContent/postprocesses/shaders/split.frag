@@ -21,6 +21,8 @@ void main() {
 
   vec4 color = texture2D(inputBuffer, uv);
   if(isOdd(index.x + index.y)) {
+    // flip x & invert color
+    color = texture2D(inputBuffer, vec2(1. - uv.x, uv.y));
     color = invertColor(color);
   }
   gl_FragColor = color;
