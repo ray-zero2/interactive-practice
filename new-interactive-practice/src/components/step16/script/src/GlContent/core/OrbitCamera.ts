@@ -90,7 +90,7 @@ export class OrbitCamera extends OrbitControls {
       x: randomPos.x,
       y: randomPos.y,
       z: randomPos.z,
-      duration: 0.8,
+      duration: 0.4,
       ease: 'power4.inOut',
     })
 
