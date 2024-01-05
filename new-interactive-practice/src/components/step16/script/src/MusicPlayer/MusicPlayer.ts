@@ -46,10 +46,10 @@ export class MusicPlayer extends Event {
     if (this.audioBuffer) {
       this.sourceNode = this.audioContext.createBufferSource();
       this.sourceNode.buffer = this.audioBuffer;
-      this.sourceNode.loop = true; // Set loop to true for repeating the audio
-      this.sourceNode.connect(this.gainNode); // Connect source to GainNode
-      this.gainNode.connect(this.analyser); // Connect GainNode to AnalyserNode
-      this.analyser.connect(this.audioContext.destination);
+      this.sourceNode.loop = true;
+      this.sourceNode.connect(this.analyser);
+      this.analyser.connect(this.gainNode);
+      this.gainNode.connect(this.audioContext.destination);
     }
   }
 
